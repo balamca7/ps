@@ -1,0 +1,232 @@
+<div ng-controller="homeCtrl"
+	class="hold-transition skin-blue  fixed">
+	<header class="main-header" id="mainHeader">
+		<!-- Logo -->
+		<a href="#!/home" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><img src="../dist/img/logo_bma.png" style="position:relative;height:40px;"></span> <!-- logo for regular state and mobile devices -->
+			<span class="logo-lg"><img src="../dist/img/logo_bma.png" style="position:relative;height:40px;"> <b>BM</b> Associates</span>
+		</a>
+		<!-- Header Navbar: style can be found in header.less -->
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas"
+				role="button" id="leftToggleNav"> <span class="sr-only">Toggle
+					navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+
+			<div class="navbar-custom-menu " id="mainNavbar">
+				<ul class="nav navbar-nav pull-left">
+					<!-- User Account: style can be found in dropdown.less -->
+					<!-- <li class="dropdown user user-menu"><a href="javascript:;"
+						class="dropdown-toggle" data-toggle="dropdown"> <img
+							ng-src="{{image}}" class="user-image" alt="User Image"> <span
+							class="hidden-xs">{{uid}}</span>
+					</a>
+						<ul class="dropdown-menu">
+							
+							<li class="user-header"><img ng-src="{{image}}"
+								class="img-circle" alt="User Image">
+
+								<p ng-model="profile.userName">
+									{{name}}
+									<small>Member since Nov. 2012</small>
+								</p></li>
+						
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#!/home/profile/{{uid}}/user"
+										class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div class="pull-right" ng-controller ="authCtrl">
+								
+									<a href="javascript:;" ng-click="logout();"
+										class="btn btn-default btn-flat">Sign out</a>
+								</div>
+							</li>
+						</ul></li> --> 
+						<li class="dropdown user user-menu">
+								<div class="pull-right" ng-controller ="authCtrl" style="margin: 7px;">
+									<a href="javascript:;" ng-click="logout();"
+										class="btn btn-danger btn-flat"><i class="fa fas fa-power-off"></i> Sign Out</a>
+								</div>
+							</li>
+						
+
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="wrapper">
+		<!-- Left side column. contains the sidebar -->
+		<aside class="main-sidebar" id="leftSidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img ng-src="{{image}}" class="img-circle" alt="User Image">
+					</div>
+					<div class="pull-left info">
+						<p>{{name}}</p>
+						<a href="javascript:;"><i class="fa fa-circle text-success"></i>
+							Online</a>
+					</div>
+				</div>
+				<!-- search form -->
+				<!--<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control"
+							placeholder="Search..."> <span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn"
+								class="btn btn-flat">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form> -->
+				<!-- /.search form -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu">
+					<li class="header">MAIN NAVIGATION</li>
+<!-- 					<li class="treeview"><a href="#!/home"> <i
+							class="fa fa-home"></i> <span>Home</span></a></li>
+							
+							
+							
+ -->					<li class="treeview">
+							<a href="#!/home/dashboard"> 
+								<i class="fa fa-dashboard"></i> 
+									<span>Dashboard</span>
+							</a>
+						</li>
+							
+							
+						<li class="treeview">
+							<a href="#!/home/listemp"> 
+								<i class="fa fa-user"></i> 
+									<span>Employee Master</span>
+							</a>
+						</li>
+						
+						<li class="treeview">
+							<a href="#!/home/salarycalc"> 
+								<i class="fa fa-money"></i> 
+									<span>Salary Calculator</span>
+							</a>
+						</li>
+						
+						<li class="treeview">
+							<a href="#!/home/payslip"> 
+								<i class="fa fa-building"></i> 
+									<span>Payslip generator</span>
+							</a>
+						</li>
+
+						
+							
+							
+				<!--		<li class="treeview">
+							<a href="#">
+								<i class="fa fa-files-o"></i>
+								<span>Master</span>
+								<span class="pull-right-container">
+								<span class="label label-primary pull-right">6</span>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+							<li><a href="#!/home/country"><i class="fa fa-circle-o"></i> Country</a></li>
+							<li><a href="#!/home/state"><i class="fa fa-circle-o"></i> State</a></li>
+							<li><a href="#!/home/city"><i class="fa fa-circle-o"></i> City</a></li>
+							<li><a href="#!/home/county"><i class="fa fa-circle-o"></i> County</a></li>
+							<li><a href="#!/home/district"><i class="fa fa-circle-o"></i> School District</a></li>
+							<li><a href="#!/home/tutor"><i class="fa fa-circle-o"></i> Tutor</a></li>
+							</ul>
+						</li>
+						
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-graduation-cap"></i>
+            <span>Education Master</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">2</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#!/home/school"><i class="fa fa-circle-o"></i> School</a></li>
+            <li><a href="#!/home/grade"><i class="fa fa-circle-o"></i> Grade</a></li>
+            
+            
+          </ul>
+        </li>-->
+		<li class="treeview">
+          <a href="javascript:;">
+            <i class="fa fa-th-large"></i>
+            <!--<span>Subject Master</span>  -->
+			<span>Master</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">3</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#!/home/department"><i class="fa fa-circle-o"></i> Department</a></li>
+            <li><a href="#!/home/designation"><i class="fa fa-circle-o"></i> Designation</a></li>
+            <li><a href="#!/home/listcomp"> <i class="fa fa-circle-o"></i> Company</a></li>
+          </ul>
+        </li>
+         <li class="treeview">
+          <a href="javascript:;">
+            <i class="fa fa-gear"></i>
+            <span>Settings</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">2</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#!/home/profile/{{uid}}/user"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li ng-controller ="authCtrl"><a href="javascript:;" ng-click="logout();"><i class="fa fa-circle-o"></i> Sign Out</a></li>
+           
+            
+            
+          </ul>
+        </li>
+        <!--
+						<li class="treeview">
+							<a href="#!/home/user"> 
+							<i class="fa fa-user"></i> 
+								<span>User Master</span>
+							</a>
+						</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Reports</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">  -->
+          <!--   <li><a href="#!/home/country"><i class="fa fa-circle-o"></i> Individual Reports</a></li> -->
+        <!--     <li><a href="#!/home/userReports"><i class="fa fa-circle-o"></i> User Post Reports</a></li>
+            <li><a href="#!/home/volunteerReports"><i class="fa fa-circle-o"></i> Volunteer Hours Reports</a></li>
+            <li><a href="#!/home/tutorReports"><i class="fa fa-circle-o"></i> Tutor Reports</a></li>
+            <li><a href="#!/home/ratingReports"><i class="fa fa-circle-o"></i> Rating Reports</a></li>
+          </ul>
+        </li>-->
+        
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<div class="content-wrapper" style="margin-top:-20px;border: 0px solid red;">
+			<div class=" slide-animation" app-view-segment="1"></div>
+
+		</div>
+
+
+
+</div>
+<script src="../dist/js/app.min.js"></script>

@@ -1,0 +1,159 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li>
+		<a href="#!/home"><i class="ace-icon fa fa-home home-icon"></i> Home</a>
+		</li>
+		<li class="active">Find Tutors</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="tutorCtrl">
+
+	<div class="row">
+		<div class="space-6"></div>
+
+		<div class=" col-sm-10 ">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+						 <!-- Chat box -->
+          <div class="box box-warning div_groupChat">
+            <div class="box-header">
+              <i class="fa fa-graduation-cap"></i>
+
+              <h3 class="box-title">Find Tutors</h3>
+            </div>
+            <div class="box-body chat" id="chat-box" style="min-height:350px;overflow:auto;">
+            <div class="box-body">
+
+
+              <div class="input-group margin">
+
+                <div class="input-group-btn">
+                                  
+							<select class="btn btn-warning select2"
+											
+											data-placeholder="Select " 
+											ng-model="findTutor.tutorType"
+											ng-options="option.id as option.name for option in listTutortype"
+											ng-change="findTutor.subjects = ''"
+											 >
+											
+							</select> 
+
+                
+                  <!--  <select class="btn btn-info select2" ng-init="findTutor.subjects = '0'" ng-model="findTutor.subjects" style="width:150px" required>
+                      <option value="0">Select</option>
+                               	<option ng-repeat="option in listSubjects.categories" value="{{option.id}}" >{{option.name}}
+                              </option>
+                                 </select> -->
+					<select class="btn btn-info select2" 
+											style="width:150px" id="category" name="category"
+											data-placeholder="Select Category" 
+											ng-model="findTutor.subjects"
+										
+											ng-change="getSubCategoryList(findTutor.subjects)" 
+											 required>
+											 	<!-- ng-options="option.id as option.name for option in Category" -->
+											<option value="" >Select Category</option>
+											<option ng-repeat="option in Category" value="{{option.id}}">{{option.name}}</option>
+										</select>
+										
+					<select class="btn btn-info select2" 
+											style="width:150px" id="subcategory" name="subcategory"
+											data-placeholder="Select Sub Category" 
+											ng-model="findTutor.subsubjects"
+											ng-options="option.id as option.name for option in subCategory"
+											 required>
+											<option value="">Select Sub Category</option>
+											
+
+										</select>
+                  
+         <!--  <select class="btn btn-info select2" ng-init="findTutor.subjects = '0'" ng-model="findTutor.subjects" style="width:150px"  required>
+                      <option value="0">Select</option>
+                                	<option ng-repeat="suboption in option.subjects" value="{{suboption.id}}">{{suboption.name}}</option>
+
+                                </optgroup>
+                                 </select>
+ -->
+                </div>
+                <!-- /btn-group -->
+                <input type="text" class="form-control" ng-model="findTutor.username">
+                <!-- /SUBJECT -->
+
+                      <span class="input-group-btn">
+                      <button type="button" class="btn btn-success btn-flat" ng-click="searchTutors(findTutor)">Go!</button>
+                    </span>
+
+              </div>
+              <div class="form-group has-warning" ng-if="message != ''">
+                  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> {{message}}</label>
+                </div>
+<!-- 
+                 <ul class="control-sidebar-menu contactMenu" >
+
+			<li ng-repeat = "tutor in listTutors"  class="col-sm-4" style="margin-top:3px;">
+			<div style="border:1px solid lightgrey;">
+			<span>
+			<a href="#!/home/profile/{{tutor.user_id}}/user">
+				<img class="direct-chat-img" ng-src="{{tutor.Image}}" alt="Message User Image">
+				<i class="menu-icon fa fa-user bg-red"></i>
+				<div class="menu-info">
+					<div class="control-sidebar-subheading" style='padding:6px;' >
+						<span class="user">{{tutor.user_id}}</span>
+					</div>
+				</div>
+			</a>
+			</span>
+			<span class="user" style="padding-left:10px;">{{tutor.tutorType}}</span>
+			<span class="user" style="padding-left:10px;">{{tutor.category}}</span>
+			<span class="user" style="padding-left:10px;">{{tutor.subcategory}}</span>
+			</div>
+			</li>
+
+		</ul> -->
+		
+		
+               <table datatable="ng" dt-options="dtOptions" id="dashboardtable"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead class="bg-primary">
+									<tr>
+										<th>Image</th>
+										<th>Tutor</th>
+										<th width="100">Tutor Type</th>
+										<th>Subjects</th>
+
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="tutor in listTutors">
+
+										<td>
+											<!--<a href="#!/home/profile/{{tutor.user_id}}/user">--> <img
+											class="direct-chat-img" ng-src="{{tutor.Image}}"
+											alt="Message User Image"> <!-- </a> -->
+										</td>
+										<td>{{tutor.user_id}}</td>
+										<td class="user" style="padding-left: 10px;">{{tutor.tutorType}}</td>
+										<td class="user" style="padding-left: 10px;">{{tutor.category}}</td>
+										<!-- <td class="user" style="padding-left:10px;">{{tutor.subcategory}}</td> -->
+										<td><a href="#!/home/schedulerequest/{{tutor.user_id}}"><button
+													class="btn btn-sm btn-warning">Schedule Request</button></a></td>
+									</tr>
+								</tbody>
+							</table>
+            	  </div>
+            </div>
+            <!-- /.chat -->
+           
+          <!-- /.box (chat box) -->
+			
+			</div>
+			<!-- /.col -->
+
+		</div>
+	
+<!-- /.page-content -->
+</div>
+</div>
+</div>

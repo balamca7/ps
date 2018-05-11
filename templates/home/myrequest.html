@@ -1,0 +1,171 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> <a
+			href="#!/home">Home</a></li>
+		<li class="active">Schdule</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="requestCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+
+		<div class="col-sm-11">
+
+
+			<div class="col-xs-12 col-sm-12 col-md-11">
+				<div class="box box-warning div_groupChat">
+					<div class="box-header">
+						<i class="fa fa-graduation-cap"></i>
+
+						<h3 class="box-title">My Appointment Requests </h3>
+					</div>
+					<div class="box-body chat" id="chat-box"
+						style="min-height: 350px; overflow: auto;">
+						<div class="box-body">
+  
+
+							<div class="form-horizontal row">
+						<br>
+							<table datatable="ng" dt-options="dtOptions"
+									class="table table-striped table-bordered" cellspacing="0"
+									width="100%">
+									<thead class="bg-primary">
+										<tr>
+											<th>Sl.No</th>
+											<th>Tutor ID</th>
+											<th>Title</th>
+											<th>Date</th>
+											<th>Start </th>
+											<th>End </th>
+											<th>Appointment Type</th>
+											<th>Location</th>
+											<th>Status</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="list in pendingList  track by $index">
+											<td>{{$index+1}}</td>
+											<td>{{list.tutor_userid}}</td>
+											<td>{{list.title}}</td>
+											<td>{{list.schdule_date}}</td>
+											<td>{{list.start_time}}</td>
+											<td>{{list.end_time}}</td>
+											<td>{{list.appiont_type}}</td>
+											<td>{{list.location}} <a ng-if="list.location != ''" target="_blank" href="https://maps.google.com/maps?q={{list.location}}"><i class="fa fa-map-marker" aria-hidden="true"></i></a></td>
+										
+											<td ng-switch="list.status">
+                                                <div ng-switch-when="Pending">
+                                                    <label	class="label  label-warning">{{list.status}}</label>
+												</div>
+												<div ng-switch-when="Accepted"><label	class="label  label-success">{{list.status}}</label>
+												</div>
+												<div ng-switch-when="Rejected"><label	class="label  label-danger">{{list.status}}</label>
+												</div>
+												<div ng-switch-when="Cancelled"><label	class="label  label-danger">{{list.status}}</label>
+												</div>
+                                                <div ng-switch-default></div>
+                                            </td>
+                                            	<td ng-switch="list.status">
+                                                <div ng-switch-when="Pending">
+                                                    	<button class="btn btn-danger btn-sm btn-block " ng-click="editstatus(0,list.id,$index)"  >Delete</button>
+												</div>
+												<div ng-switch-when="Accepted">	<button class="btn btn-danger btn-sm btn-block " ng-click="editstatus(1,list.id,$index)" >Cancel</button>
+												</div>
+											
+                                                <div ng-switch-default></div>
+                                            </td>
+										
+										<!--	<td ng-if="list.status == 'Pending'"><label	class="label  label-warning">{{list.status}}</label>
+																							</td>
+										<td ng-if="list.status == 'Accepted'"><label	class="label  label-success">{{list.status}}</label>
+										
+													</td>
+													<td ng-if="list.status == 'Rejected'"><label	class="label  label-danger">{{list.status}}</label>
+													</td>
+													<td ng-if="list.status == 'Cancelled'"><label	class="label  label-danger">{{list.status}}</label>
+													</td>
+											<td ng-if="list.status == 'Pending'">
+											    								<button class="btn btn-danger btn-sm btn-block " ng-click="editstatus(0,list.id,$index)"  >Delete</button>
+													</td>
+										<td ng-if="list.status == 'Accepted'">
+										<button class="btn btn-danger btn-sm btn-block " ng-click="editstatus(1,list.id,$index)" >Cancel</button>
+													</td>
+													-->
+											
+										</tr>
+										
+									</tbody>
+								</table>
+						<!-- 
+<table datatable="ng" dt-options="dtOptions" id="dashboardtable"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead class="bg-primary">
+									<tr>
+										<th>Sl.No</th>
+										<th>User Name</th>
+										<th>Schedule Date</th>
+										<th width="100">Start Time</th>
+										<th>End Time</th>
+										<th>Total Hour(s)</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr >
+										<td>1</td>
+										<td>Ezhil</td>
+										<td>27/07/2017</td>
+										<td>10:00</td>
+										<td>11:00</td>
+										<td>1</td>
+										<td><a href="#!/home/"><button
+													class="btn btn-sm btn-info">Accept</button></a>
+													<a href="#!/home"><button
+													class="btn btn-sm btn-danger">Reject</button></a>
+													</td>
+									</tr>
+									<tr >
+										<td>2</td>
+										<td>Shobana</td>
+										<td>28/07/2017</td>
+										<td>10:00</td>
+										<td>11:00</td>
+										<td>1</td>
+										<td><a href="#!/home"><button
+													class="btn btn-sm btn-info">Accept</button></a>
+													<a href="#!/home"><button
+													class="btn btn-sm btn-danger">Reject</button></a>
+													</td>
+									</tr>
+									<tr >
+										<td>3</td>
+										<td>Jeevan</td>
+										<td>28/07/2017</td>
+										<td>10:00</td>
+										<td>11:00</td>
+										<td>1</td>
+										<td><a href="#!/home"><button
+													class="btn btn-sm btn-info">Accept</button></a>
+													<a href="#!/home"><button
+													class="btn btn-sm btn-danger">Reject</button></a>
+													</td>
+									</tr>
+									
+								</tbody>
+							</table> -->
+							</div>
+
+						
+						<!-- /.col -->
+
+					</div>
+				</div>
+			</div>
+			<!-- /.page-content -->
+		</div>
+	</div>
+</div>
+</div>

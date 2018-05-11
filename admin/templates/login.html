@@ -1,0 +1,67 @@
+<div class="page-content" ng-controller="authCtrl">
+<div class="row" >
+<div class="col-sm-10 col-sm-offset-1" >
+    <div id="login-box" class="login-box visible widget-box with-border" >
+        <div class="widget-body" style="border:1px solid gray;padding:20px 30px;">
+            <div class="widget-main">
+            <div class="" style="text-align:center;"><img src="../dist/img/logo_bma1.png" /></div>
+                <h4 class="header blue lighter bigger">
+                    <i class="icon-coffee green"></i>
+                    Administration Panel
+                </h4>
+
+                <div class="space-16"></div>
+
+                <form name="loginForm" class="form-horizontal" role="form">
+                <div class="form-group has-feedback">
+					<input type="text" class="form-control" placeholder="User name" 
+						id="userName" name="userName" ng-model="login.username" required focus> <span
+						class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" placeholder="Password" 
+						id="password" name="password" ng-model="login.password" required> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+				
+					<div class="col-xs-8">
+						<div class="checkbox icheck">
+							
+						</div>
+					</div>
+					<!-- /.col -->
+					<div class="col-xs-4">
+						<button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">Sign
+							In</button>
+					</div>
+					<!-- /.col -->
+				</div>
+                
+                </form>
+
+                
+                
+            </div><!-- /widget-main -->
+
+            
+        </div><!-- /widget-body -->
+    </div><!-- /login-box -->
+
+</div><!-- /position-relative -->
+</div>
+</div><!-- /.page-content -->
+<!-- <footer class="main-footer" style="bottom:0px;position:fixed;width:100%;">
+	<strong>Copyright &copy; 2016 - 2017<a href="#!/home">StudyCollab</a>.
+	</strong> All rights reserved.
+</footer>
+ -->
+<script>
+    $(function(){
+    	 $('input').iCheck({
+    	      checkboxClass: 'icheckbox_square-blue',
+    	      radioClass: 'iradio_square-blue',
+    	      increaseArea: '20%' // optional
+    	    });
+    });
+    </script>

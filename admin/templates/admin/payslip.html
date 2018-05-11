@@ -1,0 +1,325 @@
+<div class="col-sm-12">
+	<ol class="breadcrumb">
+		<li>
+		<a href="#!/home"><i class="ace-icon fa fa-home home-icon"></i> Home</a>
+		</li>
+		<li class="active">Payslip Generator</li>
+	</ol>
+</div>
+
+<div class="page-content" ng-controller="empCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+		<div class="col-sm-10 ">
+			<div class="col-sm-11">
+				<div class="box box-warning">
+					<div class="box-header" >
+						
+						<h4  class="box-title" >Payslip Generator</h4>
+						
+					</div>
+					
+					<style>
+table th, td{padding:5px 5px; text-align:left;} 
+p {text-align: left;margin:5px} 
+.button {
+	align :center;
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 05px;
+    width: 150px;
+    text-align: center;
+    -webkit-transition-duration: 0.6s; /* Safari */
+    transition-duration: 0.6s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+</style>
+					
+					<!-- /.box-header -->
+					<div class="box-body" >
+					
+						
+			
+
+			<div class="form-group col-sm-12">
+									
+				<label for="inputName" class="col-sm-2 control-label">Employee : </label>
+									
+				<div class="col-sm-3">
+									<!--<input type="text" class="form-control" ng-model="employee.comp_name" placeholder="Enter company name"name="title" id="title" required>-->
+									
+					<select class="form-control select2 subject"
+											data-placeholder="Select Employee" ng-model="employee.id" 
+											ng-options="option.id as option.fname for option in employeedetails" >
+											<option value="">Select employee</option>
+											
+					</select>
+									
+				</div>
+									
+			<label for="inputName" class="col-sm-2 control-label">Month / Year : </label>
+			<div class="col-sm-3">
+				
+			<input type="Month" id="txtselectedUser" ng-model="employee.month" placeholder="Month" class="form-control" required>
+			</div>
+
+			<div class="col-sm-2"><button class="btn btn-success" ng-click="generatepayslip(employee);">Submit</label></div>
+									
+			</div>
+								
+			<div class="form-group col-sm-12">
+										
+				
+
+				</div>
+			
+
+			<div class="col-sm-12" style="border:1px solid gray; margin 10px;" id="exportthis" ng-hide="hideme">
+
+			
+
+			<table  border=0 width=100% cellpadding="0" cellspacing="0" style="border:0px solid gray; margin-top:20px;">
+					<tr>
+						<!-- <td width=20%><img src="{{payslipDetail.company_logo}}" alt="logo" style = "border: 0px solid red ;"></td> -->
+
+						<td>
+							
+							<div style = "border: 0px solid blue ; text-align:center;">
+
+								<h3>{{payslipDetail.company_name}}</h3>
+								<h5>{{payslipDetail.address}}</h5>
+								<h5>{{payslipDetail.city}} - {{payslipDetail.zip_code}} / Tel : {{payslipDetail.phone}}</h5>
+								<h4>Payslip for The Month of {{payslipDetail.monthName}}</h4>
+							</div>
+							<img src="{{payslipDetail.company_logo}}" alt="logo" width="100px" height="90px" style = "border: 0px solid red;position: absolute;left: 30px; top: 40px; ">
+						</td>
+					</tr>
+			</table>		
+			
+			<table  border=1 width=100% cellpadding=0 cellspacing=0 style="border:0px solid gray; margin-top:20px; text-align: left;">
+				
+				<tr>
+					<th width="20%">Employee Name  </th>
+					<td width="30%">{{payslipDetail.fname}} {{payslipDetail.mname}} {{payslipDetail.lname}}</td>
+					
+					<th width="20%">Bank Account No </th>
+					<td width="30%">{{payslipDetail.bank_acc_no}}</td>
+				</tr>
+				<tr>
+					<th>Employee ID  </th>
+					<td >{{payslipDetail.emp_id}}</td>
+					<th>Bank Name </th>
+					<td >{{payslipDetail.bank_name}}</td>
+					<!-- <th>PAN No  </th>
+					<td>{{payslipDetail.pan_no}}</td> -->
+				</tr>
+				
+				<tr>
+					<th>Date of Birth  </th>
+					<td >{{payslipDetail.dob | date : "dd-MMM-y"}}</td>
+					<th>Date of Joining </th>
+					<td>{{payslipDetail.doj | date : "dd-MMM-y"}}</td>
+				</tr>
+				
+				<tr>
+					<th>Designation </th>
+					<td >{{payslipDetail.designation}}</td>
+					<th>Department</th>
+					<td>{{payslipDetail.department}}</td>
+				</tr>	
+				<tr>
+					<th>PAN No  </th>
+					<td>{{payslipDetail.pan_no}}</td>
+					<th></th>
+					<td></td>
+				</tr>
+			</table>
+			
+			<table border=1 width=100% cellpadding="0" cellspacing="0" style="border:0px solid gray; margin-top:20px;">
+					<tr>
+						<th width="20%">No. of Paid days </th>
+							<td width="30%">
+								{{payslipDetail.total_working_days}}
+							</td>
+						
+						<th width="20%">LWP </th>
+							<td width="30%">
+								{{payslipDetail.lop}}
+							</td>
+
+						<!--<th>OT Hours</th>
+							<td>
+								<p for="inputName" class="control-label">-</p>
+							</td>	-->
+							
+					</tr>
+			</table>
+			
+			<table border=1 width=100% cellpadding=0 cellspacing=0 style="border:0px solid gray; margin-top:20px;">
+			<tr>
+				<th>Earnings </th>	
+				<th>Amount (INR) </th>				
+				<th>Deductions</th>	
+				<th>Amount (INR) </th>					
+			</tr>
+			<tr>
+				<td>
+					Basic
+				</td>	
+				<td>
+					{{payslipDetail.basic | number : 2}}
+				</td>
+				<td>
+					<!-- Provident fund -->
+				</td>
+				<td>
+					<!-- {{payslipDetail.pf}} -->
+				</td> 
+			</tr>
+			
+			<tr>
+				<td>
+					HRA
+				</td>	
+				<td>
+					{{payslipDetail.hra | number : 2}}
+				</td>
+				<!-- <td>
+					<p for="inputName" class="control-label">Professional tax</p>
+				</td>
+				<td>
+					<p for="inputName" class="control-label">{{payslipDetail.hra}}</p>
+				</td> -->
+				<td>
+					
+				</td>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Conveyance Allowance
+				</td>	
+				<td>
+					{{payslipDetail.conveyance | number : 2}}
+				</td>
+				<td>
+					
+				</td>
+				<td>
+					
+				</td>
+			</tr>
+				<tr>
+				<td>
+					Medical Allowance
+				</td>	
+				<td>
+					{{payslipDetail.medical_allowance | number : 2}}
+				</td>
+				<td>
+					
+				</td>
+				<td>
+				
+				</td>
+				</tr>
+				
+			<tr>
+				<td>
+					Special Allowance
+				</td>	
+				<td>
+					{{payslipDetail.special_allowance | number : 2}}
+				</td>
+				<td>
+					
+				</td>
+				<td>
+					
+				</td>
+			</tr>
+				
+			<tr>
+				<th>Total Earnings </th>	
+				<th>{{payslipDetail.ctc | number : 2}}</th>
+				
+				<th>Total Deductions</th>	
+				<th><!-- {{payslipDetail.pf | number : 2}} --></th>					
+			</tr>
+			</table>
+			
+			<table border=1 width=100% cellpadding=0 cellspacing=0 style="border:0px solid gray; margin-top:30px;">
+				<tr>
+					<th align="left">Net pay - Rs. {{payslipDetail.ctc | number : 2}} only</th>
+				</tr>
+				<tr>
+					<th align="left">{{netpay_words}}</th>
+				</tr>
+			</table>
+			
+			
+			<table border=0 width=100% cellpadding=0 cellspacing=0 style="border:1px solid gray; margin-top : 30px; margin-bottom:30px;">
+				<tr>
+					<th align="left"> This is an Auto Generated Payslip. No signature required   </th>
+				</tr>
+			</table>
+			
+			
+			</div>		
+					<div ng-hide="hideme">
+					
+					<!-- 	<button class="button"  style = "float : right;margin : 20px 20px;" ng-click="export(payslipDetail.fname, payslipDetail.monthName);">Save as PDF</button> -->
+						
+						<button type="button" class="btn btn-primary pull-right" ng-click="export(payslipDetail.fname, payslipDetail.monthName);" style="margin : 20px 20px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button>
+          <a href="#" target="_blank" class="btn btn-info" ng-click="printpay();" style="margin : 20px 20px;"><i class="fa fa-print"></i> Print</a>
+					</div>
+					</div>
+					<!-- /.box-body -->
+					
+				
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+
+<script>
+
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+
+</script>
+

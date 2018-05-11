@@ -1,0 +1,278 @@
+<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> <a
+			href="#!/home">Home</a></li>
+		<li class="active">Profile</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="profileCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+
+		<div class="col-sm-12">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<div class="box box-warning">
+					<div class="box-body box-profile">
+						<img class="profile-user-img img-responsive img-circle "
+							id="profileImage"
+							style="position: reletive; min-height: 100px; max-width: 100px;"
+							ng-src="{{Emp.profileInfo.image}}" alt="User profile picture" />
+
+						<h3 class="profile-username text-center">{{Emp.profileInfo.name}}</h3>
+
+						<p class="text-muted text-center"></p>
+
+						<ul class="list-group list-group-unbordered">
+
+							<!-- 	<li class="list-group-item"><b>Friends</b> <a
+								class="pull-right">13,287</a></li>
+ -->
+<!-- 							<li class="list-group-item"><a href="#!/home/usergroups"><b>Groups</b> <a
+								class="pull-right">{{Emp.userInfo.groupCount}}</a></li>
+ -->						</ul>
+						<a href="#" ng-click="UplodPhoto()"
+							class="btn btn-primary btn-block" id="btnUploadPhoto"
+							ng-show="Emp.hideSave"><b>Upload Photo </b></a> <a href="#"
+							ng-click="ChangePassword()" class="btn btn-primary btn-block"
+							id="btnChangePwd" ng-show="Emp.hideSave"><b>Change
+								Password</b></a>
+					</div>
+					<!-- /.box-body -->
+				</div>
+			</div>
+			<!-- 			<button ng-click="open()" class="btn btn-default">Open modal</button>
+			 
+  <modal  visible="showModal">
+    <div ng-include="modelInculdeFile"></div>
+  </modal>
+ -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div ng-include="modelInculdeFile"></div>
+
+
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<div class="nav-tabs-custom ">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#activity" data-toggle="tab">User
+								Information</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="activity">
+							<div class="form-horizontal row"
+								ng-include="getProfileTemplate(Emp.userInfo)">
+								<script type="text/ng-template" id="editProfile">
+							 <form name="formUserDetails" role="form">
+
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">User
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">First
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="text" class="form-control"
+											placeholder="First name" id="firstName" name="firstName" required
+											value="{{Emp.userInfo.f_name}}" ng-model="Emp.userInfo.f_name">
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Middle
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="text" class="form-control"
+											placeholder="Middle name" id="middleName" name="middleName"
+											value="{{Emp.userInfo.m_name}}" ng-model="Emp.userInfo.m_name">
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Last
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="text" class="form-control"
+											placeholder="Last name" id="lastName" name="lastName" required
+											value="{{Emp.userInfo.l_name}}" ng-model="Emp.userInfo.l_name">
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Email</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+									<p class="pull-left control-label">{{Emp.userInfo.email}}</p>
+									
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Alternative
+										Email</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="email" class="form-control"
+											value="{{Emp.userInfo.altEmail}}"
+											placeholder="Alternative Email" id="altEmail" name="altEmail" ng-model="Emp.userInfo.altEmail">
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Telephone</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="tel" class="form-control data-mask"
+											placeholder="Telephone" id="telephone" name="telephone" 
+											data-inputmask="'mask': ['999-999-9999', '+099 99 99 9999[9]-9999']"
+											value="{{Emp.userInfo.telephone}}" ng-model="Emp.userInfo.telephone">
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Mobile</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="tel" class="form-control data-mask"
+											placeholder="Mobile" id="mobile" name="mobile"
+											value="{{Emp.userInfo.mobile}}" 
+											data-inputmask="'mask': ['(+99) 999 999 9999', '(+99) 999 999 9999']" ng-model="Emp.userInfo.mobile">
+
+									</div>
+								</div>
+							<!-- 	<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Screen
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<input type="text" class="form-control"
+											value="{{Emp.userInfo.screen_name}}" required
+											placeholder="Screen name" id="screenName" name="screenName" ng-model="Emp.userInfo.screen_name">
+
+									</div>
+								</div>
+								 -->
+								<div class="form-group col-sm-10">
+									<div class="col-xs-6 col-sm-2 col-md-2 pull-right">
+											<button class="btn btn-danger btn-block col-sm-2" ng-click="profileReset()">Cancel</button>
+									</div>
+									<div class="col-xs-6 col-sm-2 col-md-2 pull-right">
+										<button type="submit" class="btn btn-primary btn-block col-sm-2" data-ng-disabled="formUserDetails.$invalid"
+											id="btnSaveUser"  ng-click="saveUserInfo(Emp.userInfo)" >Save</button>
+									</div>
+
+									<!-- /.col -->
+								</div>
+							 </form>
+							
+							
+			</script>
+								<script type="text/ng-template" id="displayProfile">
+        						
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">User
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">First
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.f_name}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10 ">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Middle
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.m_name}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Last
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.l_name}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Email</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.email}}</p>
+
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Alternative
+										Email</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.altEmail}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Telephone</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.telephone}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Mobile</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.mobile}}</p>
+										
+
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Screen
+										name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.userInfo.screen_name}}</p>
+									</div>
+								</div>
+								
+							
+
+								<div class="form-group col-sm-10">
+									<div class="col-xs-12 col-sm-2 pull-right">
+											<button class="btn btn-info btn-block col-sm-2" ng-click="editProfile(Emp.userInfo)" ng-show="Emp.hideSave">Edit</button>
+									</div>
+								</div>
+
+								
+    </script>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.tab-content -->
+				</div>
+				<!-- /.nav-tabs-custom -->
+			</div>
+			<!-- /.col -->
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+<script>
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+</script>

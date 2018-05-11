@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+/* Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+form .error {
+  color: #ff0000;
+  font-weight:normal;
+}
+
+/********************Rating**************************************/
+      div.stars {
+
+  width: 270px;
+
+  display: inline-block;
+
+}
+
+ 
+.formRating input.star { display: none; }
+
+ 
+
+.formRating label.star {
+
+  float: right;
+
+  padding: 1px;
+
+  font-size: 15px;
+
+  color: #444;
+
+  transition: all .2s;
+ cursor:pointer;
+}
+
+ 
+
+.formRating input.star:checked ~ label.star:before {
+
+  content: '\f005';
+
+color: #FD4;
+
+  transition: all .25s;
+ cursor:hand;
+}
+
+ 
+
+.formRating input.star-5:checked ~ label.star:before {
+
+  color: #FE7;
+
+  text-shadow: 0 0 10px #952;
+
+}
+
+ 
+
+.formRating input.star-1:checked ~ label.star:before { color: #F62; }
+
+ 
+
+.formRating label.star:hover { transform: rotate(-15deg) scale(1.3);  color: #F62;}
+
+ 
+
+.formRating label.star:before {
+
+  content: '\f006';
+
+  font-family: FontAwesome;
+
+}
+      
+      

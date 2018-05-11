@@ -1,0 +1,106 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><a href="#!/home"><i
+				class="ace-icon fa fa-home home-icon"></i> Home</a></li>
+		<li class="active">User Post Reports</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="userReportCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+		<div class=" col-sm-12 ">
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<!-- Chat box -->
+				<div class="box box-warning div_groupChat">
+					<div class="box-header">
+						<i class="fa fa-files-o"></i>
+
+						<h3 class="box-title">User Post Reports</h3>
+					</div>
+					<div class="box-body chat" id="chat-box"
+						style="min-height: 350px; overflow: auto;">
+						   <div class="form-group">
+						    <div class="col-md-1">
+      <label>From:</label>
+      </div>
+      <div class="col-md-3">
+			  <div class="input-append date" id="From" placeholder="From"  data-date-viewmode="years">
+			  
+				<input size="16" type="text" ng-model="monthYear.From" value="" readonly class="form-control form-control-1 input-sm span2">
+				<span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+			 </div>
+			  <br>
+ 			
+	</div>
+	  <div class="col-md-1">
+      <label>To:</label>
+      </div>
+	 <div class="col-md-3">
+			  <div class="input-append date" id="To" placeholder="To"  data-date-viewmode="years">
+			  
+				<input  size="16" type="text" ng-model="monthYear.To" value="" readonly class="form-control form-control-1 input-sm span2">
+				<span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+			  <br>
+ 			
+	</div>
+	 <div class="col-md-4">
+      	<button class="btn btn-success btn-xs" ng-click="getUserPostReports(monthYear)">GO</button>
+			  <button class="btn btn-info btn-xs" ng-click="exportToExcel('#dashboardtable')">
+      <span class="glyphicon glyphicon-share"></span>
+ Export to Excel
+    </button> 
+      </div>
+					  <div class="col-xs-12 col-sm-12 col-md-12">
+							<!-- datatable="ng" dt-options="dtOptions" -->
+							<table id="dashboardtable" datatable="ng" dt-options="dtOptions"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead>
+									<tr>
+										<th>S.No</th>
+										<th>User ID</th>
+										<th>Name</th>
+										<th>School Name</th>
+										<th>No. of Questions</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+						
+							
+								
+									<tr ng-repeat="rec in UserPostReports"	>
+									    <td>{{$index+1}}</td>
+										<td>{{rec.user_id}}</td>
+										<td>{{rec.name}}</td>
+										<td>{{rec.school_name}}</td>
+										<td>{{rec.Count}}</td>
+					
+									</tr>
+								</tbody>
+							</table>
+
+							
+
+							<br>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+	</div>
+	<script>
+	
+	
+	$('#From,#To').datepicker({
+	    autoclose: true,
+	   
+	    format: 'dd/mm/yyyy'
+	});
+
+
+	</script>

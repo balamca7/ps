@@ -1,0 +1,206 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> 
+			<a href="#!/home">Home</a></li>
+		<li><a href="#!/home/dashboard">Dashboard</a></li>
+		<li class="active">Content</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="contentCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+		<div class="col-sm-10 ">
+			<div class="col-sm-12">
+				<div class="box box-warning">
+					<div class="box-header">
+						<!-- <h3 class="box-title">Latest Discussion</h3> -->
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="tab-content">
+							<!-- Post -->
+							<div class="post">
+							<div class="user-block">
+						    <a href="#!/home/dashboard/category/{{Content.category.name}}">	<small class="label label-danger"> {{Content.category.name}}</small> </a><i class="fa fa-arrow-right"></i> 
+						    <a href="#!/home/dashboard/subcategory/{{Content.subCategory.name}}">	<small class="label label-info"> {{Content.subCategory.name}}</small> </a> <i class="fa fa-arrow-right"></i>
+							<small class="label label-warning"> {{Content.title}}</small>
+
+							</div>
+
+								<div class="user-block">
+									<img class="img-circle img-bordered-sm" src="{{Content.user.image}}"
+										alt="user image"> <span class="username"> 
+										{{Content.user.name}}
+										<!--<a href="#!/home/profile/{{Content.user.user_id}}/user">{{Content.user.name}}</a>-->
+									<!--	<button type='button' class='btn btn-box-tool' title='Phone Call' onclick="jqcc.cometchat.chatWith(6)">
+										<a href="tel:{{Content.user.mobile}}"><i class='fa fa-phone' aria-hidden="true"></i></a>
+										<a href="#" ><i class='fa fa-phone' aria-hidden="true"></i></a>
+										</button>-->
+
+									</span> <span class="description">Posted - {{Content.postedDate}}</span>
+								</div>
+								<!-- /.user-block -->
+								<p>
+								<h4>{{Content.title}}</h4>
+								<p style="text-indent: 50px;padding:10px;border-top:1px solid lightgrey;">{{Content.description}}</p>
+								<p></p>
+								<ul class="list-inline">
+									<li class="pull-left"><a href="#"
+										class="link-black text-sm"><i
+											class="fa fa-comments-o margin-r-5"></i> Comments ({{Content.comments.length}})</a></li>
+									<li></li>
+								</ul>
+
+								<form method="POST" id="formAddComment" class="form-horizontal" ng-submit="addComment(Content.id, Content.commenttxt, null)">
+									<div class="input-group">
+										<input class="form-control input-sm"
+											placeholder="Type a comment" id="commenttxt" ng-model="Content.commenttxt">
+
+										<div class="input-group-btn">
+											<button type="submit" class="btn btn-warning input-sm"
+												id="btnPostComment">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
+							<!-- /.post -->
+
+
+							<div>
+								<label>Comments</label><br>
+								<div id="comments">
+
+									<!-- {{Content.Comments}} -->
+									<ul class="timeline timeline-inverse commentsUL"
+										ng-repeat="comment in Content.comments">
+										<li>
+											<div class="timeline-item">
+												<!-- <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span> -->
+												<div class="user-block  timeline-header">
+													<img class="img-circle img-bordered-sm"
+														src="{{comment.user.image}}" alt="user image"> <span
+														class="username "> 
+														{{comment.user.name}}
+														<!--<a href="#!/home/profile/{{comment.user.user_id}}/user">{{comment.user.name}}</a>
+														<button type='button' class='btn btn-box-tool' title='Phone Call'>
+										<a href="tel:{{comment.user.mobile}}"><i class='fa fa-phone' aria-hidden="true"></i></a>
+										</button>-->
+
+														<font class="pull-right text-sm"><i
+															class="fa fa-clock-o"></i> {{comment.postedDate}}</font>
+													</span> <a href="javascript:;" ng-click="replyComment(Content.id, comment.id)"
+														class="text-sm pull-right recomments"
+														id="$row['comment_id']$postid"><i
+														class="fa fa-reply margin-r-5" ></i> Reply </a>
+														<span class="stars pull-left" ng-show="comment.ratingShow" >
+				<form method="POST" id="{{comment.id}}" class="formRating"  ng-submit="" ng-click="ratingComment(Content.id, comment.id, comment.rating, null)" >
+				<input  class="star star-5" id="{{comment.id}}_star-5" type="radio" name="star" value="5" ng-model="comment.rating" ng-disabled="comment.ratingDisabled" /> <label class="star star-5" for="{{comment.id}}_star-5"></label>
+				<input class="star star-4" id="{{comment.id}}_star-4" type="radio" name="star" value="4" ng-model="comment.rating" ng-disabled="comment.ratingDisabled" /> <label class="star star-4" for="{{comment.id}}_star-4"></label>
+				<input class="star star-3" id="{{comment.id}}_star-3" type="radio" name="star" value="3" ng-model="comment.rating" ng-disabled="comment.ratingDisabled" /> <label class="star star-3" for="{{comment.id}}_star-3"></label>
+				<input class="star star-2" id="{{comment.id}}_star-2" type="radio" name="star" value="2" ng-model="comment.rating" ng-disabled="comment.ratingDisabled" /> <label class="star star-2" for="{{comment.id}}_star-2"></label>
+				<input class="star star-1" id="{{comment.id}}_star-1" type="radio" name="star" value="1" ng-model="comment.rating" ng-disabled="comment.ratingDisabled" /> <label class="star star-1" for="{{comment.id}}_star-1"></label>
+				</form>
+
+													</span>
+
+
+												</div>
+												<div class="timeline-body">{{comment.comment}}</div>
+												<!-- comment Display Start -->
+												<div ng-show="showReply == comment.id" class="divReply"
+													style="border: 0px solid red; padding: 0px 100px;"
+													id="div$row['comment_id']$postid; ">
+													<div class="user-block  timeline-header">
+														<img class=" img-bordered-sm" ng-src="{{image}}" alt="user image">
+														<span class="username">
+															<div class="input-group1">
+																<form method="POST" ng-submit="addComment(Content.id, Content.recommenttxt, comment.id)"
+																	class="form-horizontal formReComment">
+																	<div class="input-group">
+																		<input class="form-control input-sm" ng-model="Content.recommenttxt"
+																			placeholder="Type a comment" id="recommenttxt">
+
+																		<div class="input-group-btn">
+																			<button type="submit"
+																				class="btn btn-warning input-sm btnReComment"
+																				id="$row['comment_id']$postid; ">
+																				<i class="fa fa-reply"></i>
+																			</button>
+																		</div>
+																	</div>
+																</form>
+														</span>
+													</div>
+												</div>
+											</div> <!-- comment Display End --> <!-- Recomment Start -->
+											<div style="border: 0px solid red; padding: 0px 50px 0px 30px;"
+												id="divReply">
+
+												<ul class="timeline" ng-repeat="recomment in comment.recomments">
+
+													<li>
+														<div class="timeline-item">
+															<!-- <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span> -->
+															<div class="user-block  timeline-header1">
+																<img class="img-circle img-bordered-sm"
+																	ng-src="{{recomment.user.image}}" alt="user image">
+																<div class="username" style="border: 0px solid red;">
+																	<span class="pull-left">
+																	    {{recomment.user.name}}
+																	    <!--<a href="#!/home/profile/{{recomment.user.user_id}}/user">{{recomment.user.name}}</a>-->
+																	    </span> <span class="pull-right"><font
+																		class="pull-right text-sm"><i
+																			class="fa fa-clock-o"></i> {{recomment.postedDate}}</font></span>
+																			<span class="stars pull-left" ng-show="recomment.ratingShow">
+
+					<form action="" id="{{recomment.id}}" class="formRating" ng-submit="" ng-click="ratingComment(Content.id, recomment.id, recomment.rating, comment.id)" >
+
+						<input class="star star-5" id="{{recomment.id}}_star-5" type="radio" name="star" value="5" ng-model="recomment.rating" ng-disabled="recomment.ratingDisabled" /><label class="star star-5" for="{{recomment.id}}_star-5"></label>
+						<input class="star star-4" id="{{recomment.id}}_star-4" type="radio" name="star" value="4" ng-model="recomment.rating" ng-disabled="recomment.ratingDisabled" /><label class="star star-4" for="{{recomment.id}}_star-4"></label>
+					  	<input class="star star-3" id="{{recomment.id}}_star-3" type="radio" name="star" value="3" ng-model="recomment.rating" ng-disabled="recomment.ratingDisabled" /><label class="star star-3" for="{{recomment.id}}_star-3"></label>
+					  	<input class="star star-2" id="{{recomment.id}}_star-2" type="radio" name="star" value="2" ng-model="recomment.rating" ng-disabled="recomment.ratingDisabled" /><label class="star star-2" for="{{recomment.id}}_star-2"></label>
+					  	<input class="star star-1" id="{{recomment.id}}_star-1" type="radio" name="star" value="1" ng-model="recomment.rating" ng-disabled="recomment.ratingDisabled" /><label class="star star-1" for="{{recomment.id}}_star-1"></label>
+					</form>
+
+																	</span> <span style="color: #444; font-size: normal;"
+																		class="input-sm col-sm-12">
+																		{{recomment.comment}} </span>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div> <!-- Recomment END -->
+
+
+										</li>
+
+										<!-- timeline item -->
+
+										<!-- END timeline item -->
+										<!-- timeline item -->
+
+
+									</ul>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /.box-body -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+<script>
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+</script>

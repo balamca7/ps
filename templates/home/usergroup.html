@@ -1,0 +1,76 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li>
+		<a href="#!/home"><i class="ace-icon fa fa-home home-icon"></i> Home</a>
+		</li>
+		<li class="active">User Groups</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="usergroupCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+	
+		<div class=" col-sm-10 ">
+						<div class="col-xs-12 col-sm-12 col-md-9">
+						 <!-- Chat box -->
+          <div class="box box-warning div_groupChat">
+            <div class="box-header">
+              <i class="fa fa-group"></i>
+
+              <h3 class="box-title">User Group</h3>
+            </div>
+            <div class="box-body chat" id="chat-box" style="height:350px;overflow:auto;">
+            <form method="POST" id="formAddComment" class="form-horizontal" ng-submit="CreateNewGroup(group_name)">
+              <div class="input-group">
+                <input class="form-control msg" placeholder="Enter group name..." id="group_name" name ="group_name" ng-model="group_name" >
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-success" id="btnSendMsg"><i class="fa fa-plus"></i> Create New Group</button>
+                </div>
+              </div>
+              </form>
+              <div >
+                 <ul class="control-sidebar-menu contactMenu" style="padding:3px;">
+			<li ng-repeat = "groupfriends in groupcontacts"  class="col-sm-4" style="margin-top:3px;">
+			<div style="border:1px solid lightgrey;"><span >
+			<a href="#!/home/groups/{{groupfriends.id}}/group"> 
+				<img class="direct-chat-img" ng-src="{{groupfriends.image}}" alt="Message User Image">
+				<!-- <i class="menu-icon fa fa-user bg-red"></i> -->
+				<div class="menu-info">
+					<div class="control-sidebar-subheading" style='padding:10px 5px;' >
+						<span class="user">{{groupfriends.group_name}}</span>
+					</div>
+				</div>
+			</a>
+			</span>
+			
+			</div>
+			</li>
+		</ul>
+            	</div>
+            </div>
+            <!-- /.chat -->
+           
+          <!-- /.box (chat box) -->
+			
+			</div>
+			<!-- /.col -->
+
+		</div>
+	
+<!-- /.page-content -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div ng-include="modelInculdeFile"></div>
+
+  
+</div>
+
+</div>
+</div>
+</div>
+<script>
+	$(function() {
+		$("#leftSidebar").removeClass("hide");
+	});
+</script>

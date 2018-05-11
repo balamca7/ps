@@ -1,0 +1,289 @@
+<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li>
+		<a href="#!/home"><i class="ace-icon fa fa-home home-icon"></i> Home</a>
+		</li>
+		<li class="active">Salary calculator</li>
+	</ol>
+</section>
+			<div class="page-content" ng-controller="empCtrl">
+			<div class="row">
+			<div class="space-6"></div>
+			<div class="col-sm-12 ">
+			<div class="col-sm-12">
+				<div class="box box-warning">
+					<div class="box-header">
+						<h3 class="box-title">Salary Calculator</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+					
+						
+				
+					
+								<!--	<div class="form-group col-sm-12">
+										<button class="btn btn-success style" style  = "float : right" ng-click = "testroute();">Test route</label>
+									</div>  -->
+
+					<form role="form" name="formSalary"  id="formSalary" class="form-horizontal  row">
+	
+									
+									
+								<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Employee : </label>
+									
+									<div class="col-sm-3">
+									<!--<input type="text" class="form-control" ng-model="employee.comp_name" placeholder="Enter company name"name="title" id="title" required>-->
+									
+									<select class="form-control select2 subject" ng-disabled="!disabledFlg"
+										data-placeholder="Select Employee" id="employee"  name="employee" ng-model="employee.id" 
+										ng-options="option.id as option.fname for option in employeedetails" required>
+										<option value="">Select employee</option>
+										
+									</select>
+									<small
+								class="error"
+								ng-show="formSalary.employee.$dirty && formSalary.employee.$error.required">
+								Select Employee.</small>
+									</div>
+									
+									<label for="inputName" class="col-sm-3 control-label">Month / Year : </label>
+									<div class="col-sm-3">
+									<input type="Month" id="month" name="month" ng-model="employee.month" placeholder="Month" class="form-control" required  ng-disabled="!disabledFlg">
+									<small
+								class="error"
+								ng-show="formSalary.month.$dirty && formSalary.month.$error.required">
+								Enter month and year.</small>
+									</div>
+									
+								</div>	
+								
+								
+								<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Total Working days : </label>
+									<div class="col-sm-3">
+									<input type="number" min="0" max="31" class="form-control" name="tot_days" ng-model='employee.tot_days' placeholder="Working days" name="acc_no" id="acc_no" required  ng-disabled="!disabledFlg">									<small
+								class="error"
+								ng-show="formSalary.tot_days.$dirty && formSalary.tot_days.$error.required">
+								Enter no of total working days.</small>
+									</div>
+
+									<label for="inputName" class="col-sm-3 control-label">No. of day(s) LWP : </label>
+									<div class="col-sm-3">
+									<input type="number" min="0" max="31" class="form-control" ng-model='employee.lop' placeholder="Absences" name="bank_name" id="bank_name" value="0"  ng-disabled="!disabledFlg">
+									
+									</div>
+									
+								</div>
+								
+								<div class="form-group col-sm-12">
+										<div class="col-sm-12" style="text-align: right;"><button class="btn btn-success"  ng-click="getempdetailforsalary(employee);" ng-disabled="formSalary.$invalid">Submit</button> &nbsp;<button class="btn btn-danger"  ng-click="cancelSalaryCalc();">Cancel</button></div>
+								</div>
+								<div id="details" ng-show="disabledFlg">
+								<div class="form-group col-sm-12">
+									
+											<label for="inputName" class="col-sm-3 control-label"> CTC: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.ctc}}</p>
+											</div>
+											
+											
+																												
+								</div>
+									
+								<div class="form-group col-sm-12">
+		
+											<label for="inputName" class="col-sm-3 control-label"> Total working days: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.total_working_days}}</p>
+											</div>
+											
+											<label for="inputName" class="col-sm-3 control-label">LOP : </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.lop}}</p>
+											</div>
+											
+								</div>
+									
+								
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Basic: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.basic}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label"> HRA: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.hra}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Conveyance Allowance: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.conveyance}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label"> Medical Allowance: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.medical_allowance}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Special Allowance: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.special_allowance}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Retention Bonus : </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.retention_bonus}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Variable Incentive: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.variable_incentive}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Notice Buyout : </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.notice_buyout}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Provident Fund : </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.pf}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Gratuity : </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.gratuity}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> MEDICAL Insurance Premium: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.medical_insurance}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Allowance for House: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.house_allowance}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Year End Bonus: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.year_end_bonus}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Total Gross CTC: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.total_cross_ctc}}</p>
+											</div>
+															
+								</div>
+								
+								<div class="form-group col-sm-12">
+								
+																			
+											<label for="inputName" class="col-sm-3 control-label"> Month: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.month}}</p>
+											</div>
+																						
+											<label for="inputName" class="col-sm-3 control-label">Year: </label>
+										
+											<div class="col-sm-3">
+												<!--<p class="pull-left control-label">{{Emp.userInfo.user_id}}</p>	-->		
+												<p class="pull-left control-label">{{employeedetail.year}}</p>
+											</div>
+															
+								</div>
+									
+								</div>
+
+									
+						</form>
+					</div>
+					<!-- /.box-body -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+
+<script>
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+</script>
+

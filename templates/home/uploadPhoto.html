@@ -1,0 +1,27 @@
+
+<div ng-controller="UploadController">
+<form method="POST" id="formUpload" name ="formUpload" class="form-horizontal" ng-submit="uploadFile(id)">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Upload Photo</h4>
+      </div>
+      <div class="modal-body" >
+       <div >
+  
+       <input type="file" file-input="files" id="userFile" name="userFile" required>
+              <!-- <input type="file" file-input="files" required> -->
+   
+   <b>Progress:</b>
+  <progress value="{{progress}}"></progress>
+     </div>
+     </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" >Upload</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </form>
+  </div>

@@ -1,0 +1,198 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><a href="#!/home"><i
+				class="ace-icon fa fa-home home-icon"></i> Home</a></li>
+		<li class="active">District</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="districtCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+		<div class=" col-sm-10 ">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<!-- Chat box -->
+				<div class="box box-warning div_groupChat">
+					<div class="box-header">
+						<i class="fa fa-book"></i>
+
+						<h3 class="box-title">District</h3>
+					</div>
+					<div class="box-body chat" id="chat-box"
+						style="min-height: 350px; overflow: auto;">
+
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="input-group col-sm-4">
+								<button class="btn btn-sm btn-success"
+									ng-click="addNewClicked=!addNewClicked;">Add New</button>
+							</div>
+							<br>
+							
+							<form method="POST" name="formNew" id="formNew" class="form-horizontal" role="form">
+							
+									<div style="border:1px solid lightgrey;padding:10px;" ng-init="addNewClicked=false; newCategory = {name:'', isActive:''}; "	ng-show="addNewClicked">
+					<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">Country</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right"> 
+							<select class="form-control select2 input-sm"
+											style="width: 100%;" id="country" name="country"
+											data-placeholder="Select Country" 
+											ng-model="country"
+											ng-options="option as option.name for option in Country"
+											 required>
+											<option value="">Select Country</option>
+							</select>
+							 <small
+											class="error"
+											ng-show="formNew.country.$dirty && formNew.country.$error.required">
+												select country name.</small>
+							</span>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">State</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right"> 
+							<select class="form-control select2 input-sm"
+											style="width: 100%;" id="state" name="state"
+											data-placeholder="Select State" 
+											ng-model="newDistrict.state_id"
+											ng-options="option.id as option.name for option in country.states"
+											 required>
+											<option value="">Select State</option>
+							</select>
+							 <small
+											class="error"
+											ng-show="formNew.state.$dirty && formNew.state.$error.required">
+												select state name.</small>
+							</span>
+						</div>
+					</div>
+
+							
+							<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">District Name</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right"> 
+							<input type="text" class="form-control input-sm"
+											placeholder="District name" name="name"
+											ng-model="newDistrict.name" required> <small
+											class="error"
+											ng-show="formNew.name.$dirty && formNew.name.$error.required">
+												Enter district name.</small>
+							</span>
+						</div>
+					</div>	
+												<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">Status</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right">
+							<input icheck type="checkbox" ng-checked="true"
+											disabled ng-model="newDistrict.isActive"> 
+							</span>
+						</div>
+					</div>
+					
+												<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right"></label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right">
+							<button type="submit" class="btn btn-sm btn-success"
+												ng-disabled="formNew.$invalid"
+												ng-click="addDistrict(newDistrict)">Add</button>&nbsp;
+											<button class="btn btn-sm btn-danger"
+												ng-click="addNewClicked = false; newDistrict = {name:'', code:'', country:'',isActive:true};">Cancel</button>
+							</span>
+						</div>
+					</div>
+					
+
+					
+						</div>	
+							
+								</div>
+							</form>
+
+						
+							<div class="col-xs-12 col-sm-12 col-md-12">
+							<!-- datatable="ng" dt-options="dtOptions" -->
+							<table id="dashboardtable" datatable="ng" dt-options="dtOptions"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Country</th>
+										<th>State</th>
+										<th>District</th>
+										<th>Status</th>
+										<th width="100px">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+									<tr ng-repeat="subcat in district"	ng-include="getDistrictTemplate(subcat)">
+									</tr>
+
+								</tbody>
+							</table>
+
+							<script type="text/ng-template" id="displayDistrict">
+			        <td>{{subcat.id}}</td>
+					<td>{{subcat.country.name}}</td>
+					<td>{{subcat.state.name}}</td>
+					<td>{{subcat.name}}</td>
+					<td>{{subcat.isActive == 1 ? 'Active':'In Active'}}</td>
+					<td>
+						
+						<button class="btn btn-sm btn-info" ng-click="editDistrict(subcat)">Edit</button>
+
+						</td>
+
+    </script>
+							<script type="text/ng-template" id="editDistrict">
+	<form method="POST" id="formUpload" name="formUpload" 
+					class="form-horizontal"	>
+					<td>{{district.selected.id}}</td>
+					<td><select class="form-control select2 input-sm"
+											style="width: 100%;" id="country" name="country"
+											data-placeholder="Select Country" 
+											ng-model="district.selected.country_id"
+											ng-options="option.id as option.name for option in Country"
+											 
+											 required>
+											<option value="">Select Country</option>
+							</select>
+					</td>
+					<td><select class="form-control select2 input-sm"
+											style="width: 100%;" id="state" name="state"
+											data-placeholder="Select State" 
+											ng-model="district.selected.state_id"
+											ng-options="option.id as option.name for option in Country[district.selected.country_id-1].states"
+											 
+											 required>
+											<option value="">Select State</option>
+							</select>
+					</td>
+
+					<td><input type="text" class="form-control input-sm" ng-model="district.selected.name" required> </td>					
+					<td><input icheck type="checkbox" class="icheck" ng-model="district.selected.isActive" ng-checked="district.selected.isActive==1"></td>
+					<td><button class="btn btn-sm btn-success" ng-disabled="district.selected.name==undefined || district.selected.state_id==undefined || district.selected.country_id == undefined" ng-click="saveEditDistrict($index, district.selected)" >Save</button>
+						<button class="btn btn-sm btn-danger" ng-click="reset()">Cancel</button>
+					</td>
+					</form>
+				
+    </script>
+
+							<br>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+	</div>

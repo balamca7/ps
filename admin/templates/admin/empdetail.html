@@ -1,0 +1,187 @@
+<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li>
+		<a href="#!/home"><i class="ace-icon fa fa-home home-icon"></i> Home</a>
+		</li>
+		<li class="active">Employee Details</li>
+	</ol>
+</section>
+<style>
+a.one {
+    border-style: solid;
+    border-width: 2px;
+	background:blue;
+	color : white;
+}
+</style>
+<div class="page-content" ng-controller="empCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+		<div class="col-sm-10 ">
+			<div class="col-sm-12">
+				<div class="box box-warning">
+					<div class="box-header">
+						<h3 class="box-title">Employee Details</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+					<!--<pre>{{employeedetail |json}}</pre>-->
+						
+								
+
+					<form ng-submit="updateEmployee(employeedetail)" role="form" name="formPostQuestion"  id="formPostQuestion" class="form-horizontal  row">
+	
+									
+									<!--<div class="form-group col-sm-12 center" style="text-align:center;">
+										<img src="../dist/img/logo_bma.png" class="center" alt="logo"> BM Associates
+									</div>
+									
+									<!--<div class="form-group col-sm-12">
+										<label for="inputName" class="col-sm-3 control-label">Employee ID : </label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="emp_id" id="emp_id" placeholder="Employee Id" required>									
+									</div>
+									
+									</div> -->
+									
+									<div class="form-group col-sm-12">
+										<label for="inputName" class="col-sm-3 control-label">Employee Name : </label>
+										
+											<div class="col-sm-3">
+												<p class="pull-left control-label">{{employeedetail.fname}}</p>						
+											</div>
+											
+											<div class="col-sm-3">
+												<p class="pull-left control-label">{{employeedetail.mname}}	</p>	
+											</div>
+											
+											<div class="col-sm-3">
+												<p class="pull-left control-label">{{employeedetail.lname}}	</p>			
+											</div>
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+										<label for="inputName" class="col-sm-3 control-label">Present address : </label>
+										<div class="col-sm-9">
+											<p class="pull-left control-label">{{employeedetail.pre_address}}</p>
+										</div>
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Permanent address : </label>
+									<div class="col-sm-9">
+										<p class="pull-left control-label">{{employeedetail.per_address}}</p>
+										
+									</div>
+									
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">DOB :</label>
+									<div class="col-sm-3">						
+										<p class="pull-left control-label">{{employeedetail.dob}}</p>
+									
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">PAN No : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.pan_no}}</p>
+									</div>
+									
+									</div>
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Email :</label>
+									<div class="col-sm-3">		
+									<p class="pull-left control-label">{{employeedetail.email}}</p>				
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">Mobile : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.mobile}}</p>
+									</div>
+									
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Company Name : </label>
+									<div class="col-sm-3">
+									<p class="pull-left control-label">{{employeedetail.company_name}}</p>
+									
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">DOJ : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.doj}}</p>
+									</div>
+									
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Department :</label>
+									<div class="col-sm-3">						
+										<p class="pull-left control-label">{{employeedetail.department}}</p>
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">Designation : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.designation}}</p>
+									
+									</div>
+									
+									</div>
+									
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Bank account No : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.bank_acc_no}}</p>
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">Bank name : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.bank_name}}</p>
+									</div>
+									
+									</div>
+									
+									<div class="form-group col-sm-12">
+									
+									<label for="inputName" class="col-sm-3 control-label">Annual CTC : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.annual_ctc}}</p>
+									</div>
+									<label for="inputName" class="col-sm-3 control-label">Monthly CTC : </label>
+									<div class="col-sm-3">
+										<p class="pull-left control-label">{{employeedetail.monthly_ctc}}</p>
+									</div>
+									
+									</div>
+									<div class="form-group col-sm-12">
+										<div class="col-sm-12" style="text-align: right;"><a href="#!/home/updateemp/{{employeedetail.id}}"  class="btn btn-primary" >Edit Employee</a> 
+										<a href="#!/home/listemp" class="btn btn-danger" >Cancel</a>
+										</div>
+									</div>
+									
+						</form>
+					<!-- /.box-body -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+
+<script>
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+</script>
+

@@ -1,0 +1,357 @@
+  <header class="main-header hide" id="mainHeader">
+    <!-- Logo -->
+    <a href="#!/home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>SC</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Study</b>Collab</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="javascript:;" class="sidebar-toggle hide" data-toggle="offcanvas" role="button" id="leftToggleNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu " id="mainNavbar">
+        <ul class="nav navbar-nav pull-left">
+                  <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu" >
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-info">{{MsgNotification.totalMsgCount}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{MsgNotification.totalMsgCount}} messages</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li ng-repeat="msgList in MsgNotification.MsgNotificationList">
+                    <a href="javascript:;" ng-click="chatUsers(msgList.sent_id)">
+                      <div class="pull-left">
+                        <img ng-src = "{{msgList.image}}" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        {{msgList.sent_id}}
+                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                      </h4>
+                      <p>{{msgList.msgCount}} Message(s).</p>
+                    </a>
+                  </li>
+                  <!-- end message -->
+                </ul>
+              </li>
+              <li class="footer"><a href="javascript:;">See All Messages</a></li>
+            </ul>
+          </li>
+          <!-- Notifications: style can be found in dropdown.less -->
+          <!-- <li class="dropdown notifications-menu">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                inner menu: contains the actual data
+                <ul class="menu">
+                  <li>
+                    <a href="javascript:;">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="javascript:;">View all</a></li>
+            </ul>
+          </li> -->
+          <!-- Tasks: style can be found in dropdown.less -->
+<!--           <li class="dropdown tasks-menu">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">9</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 9 tasks</li>
+              <li>
+                inner menu: contains the actual data
+                <ul class="menu">
+                  <li>Task item
+                    <a href="javascript:;">
+                      <h3>
+                        Design some buttons
+                        <small class="pull-right">20%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">20% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  end task item
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="javascript:;">View all tasks</a>
+              </li>
+            </ul>
+          </li>
+ -->          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <img ng-src = "{{image}}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{uid}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img ng-src = "{{image}}" class="img-circle" alt="User Image">
+
+                <p ng-model="profile.userName">
+                  {{name}}
+                  <!-- <small>Member since Nov. 2012</small> -->
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#!/profile/{{uid}}/user" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="javascript:;" ng-click="logout();" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+
+    </ul>
+
+
+
+    <!-- Control Sidebar Toggle Button -->
+     <ul class="nav navbar-nav pull-right">
+          <li>
+            <a href="javascript:;" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+
+
+
+    </nav>
+  </header>
+
+
+    <section class="content-header" >
+      <ol class="breadcrumb">
+        <li><a href="javascript:;"><i class="fa fa-dashboard"></i> Home</a></li>
+      </ol>
+    </section>
+ <div class="page-content" ng-controller="homeCtrl">
+    <div class="row">
+        <div class="space-6"></div>
+        <div class="col-sm-10 ">
+
+                <div class="widget-body">
+ <div class="row content-header">
+ 
+  <!-- ./col -->
+        <div class=" col-xs-12 col-lg-6">
+          <!-- small box -->
+          
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>Welcome</h3>
+
+              <p>{{name}}</p>
+            </div>
+            <div class="icon ">
+              <i class="ion ion-person"></i>
+              
+            </div>
+            <a href="#!/profile/{{uid}}/user" class="small-box-footer">
+          
+            More info <i class="fa fa-arrow-circle-right"></i>
+          </a>  
+          </div>
+          
+        </div>
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+          
+            <div class="inner">
+              <h3>Ask&nbsp;</h3>
+
+              <p> Question</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-files-o"></i>
+            </div>
+                <a href="#!/postQuestion" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+               </a>
+             </div>
+          
+         
+        </div>
+        <!-- ./col -->
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          
+          <div class="small-box bg-maroon">
+            <div class="inner">
+              <h3>View&nbsp;</h3>
+
+              <p> Questions</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-eye"></i>
+            </div>
+            <a href="#!/dashboard" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+          
+        </div>
+        <!-- ./col -->
+      <!--   <div class="col-lg-3 col-xs-6">
+          small box
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+       
+ -->       
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-4">
+         <a href="#!/findtutors">
+       
+          <div class="info-box bg-navy">
+            <span class="info-box-icon "><i class="fa fa-graduation-cap"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Find <br>Tutors</span>
+              <span class="info-box-number"></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+          </a>
+        </div>
+         <!-- ./col -->
+       
+       
+        <div class="col-md-3 col-sm-6 col-xs-4" >
+        <a href="#!/usergroups">
+          <div class="info-box bg-purple">
+            <span class="info-box-icon"><i class="fa fa-group"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">User <br>Groups</span>
+              <span class="info-box-number"></span>
+            </div>
+            <!-- /.info-box-content -->
+
+          </div>
+          <!-- /.info-box -->
+                      </a>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-4">
+          <div class="info-box bg-olive">
+            <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Volunteer <br>Hours</span>
+              <span class="info-box-number">{{volunteerHours}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-4">
+          <div class="info-box  bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-star-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Overall <br>Rating</span>
+              <span class="info-box-number">{{userRating}} Star(s)</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+     
+      <!-- =========================================================== -->
+
+     
+        <div class="col-md-3 col-sm-6 col-xs-4">
+        <a href="#!/userSubjects/{{uid}}">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Subjects</span>
+              <span class="info-box-number"></span>
+
+              
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          </a>
+          <!-- /.info-box -->
+        </div>
+        
+        <!-- /.col -->
+<!--         <div class="col-md-3 col-sm-6 col-xs-4">
+          <div class="info-box bg-orange">
+            <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Events</span>
+              <span class="info-box-number"></span>
+            </div>
+          </div>
+        </div>
+ -->
+         <!-- /.col -->
+<!--         <div class="col-md-3 col-sm-6 col-xs-4">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Chat</span>
+              <span class="info-box-number"></span>
+            </div>
+          </div>
+        </div>
+ -->
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      
+
+      <!-- =========================================================== -->
+       
+                
+            </div>
+        </div>
+    </div>
+</div>

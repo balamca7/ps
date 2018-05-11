@@ -1,0 +1,116 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> <a
+			href="#!/home">Home</a></li>
+		<li class="active">Groups</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="groupCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+		<div class="col-sm-11">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<div class="box box-warning">
+					<div class="box-body box-profile">
+						<img class="profile-user-img img-responsive img-circle "
+							id="profileImage"
+							style="position: reletive; min-height: 100px; max-width: 100px;"
+							ng-src="{{groups.groupInfo.image}}" alt="User profile picture" />
+
+						<h3 class="profile-username text-center">{{groups.groupInfo.name}}</h3>
+
+						<p class="text-muted text-center"></p>
+
+						<ul class="list-group list-group-unbordered">
+
+							<li class="list-group-item"><b>Friends</b> <a
+								class="pull-right">{{groups.groupInfo.memberCount}}</a></li>
+
+						</ul>
+
+    
+  
+
+
+							<a href="#" ng-click="UplodPhoto()" class="btn btn-primary btn-block" id="btnGroupUploadPhoto" ng-show="!Emp.hideSave"><b>Upload Photo </b></a>
+							<!-- <a href="#" ng-click="AddGroupMember()" class="btn btn-primary btn-block" id="btnAddGroupMember" ng-show="!Emp.hideSave"><b>Add Group Member</b></a> -->
+							<a href="#" ng-click="ViewGroupMember()" class="btn btn-primary btn-block" id="btnViewGroupMember" ng-show="!Emp.hideSave"><b>View Group Member</b></a>
+<!-- 	<modal title="Upload Photo" visible="showModal">
+
+  </modal>
+   -->
+
+					</div>
+					<!-- /.box-body -->
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-9">
+						 <!-- Chat box -->
+          <div class="box box-warning div_groupChat">
+            <div class="box-header">
+              <i class="fa fa-comments-o"></i>
+
+              <h3 class="box-title">{{groups.groupInfo.name}}</h3>
+
+            <!--   <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                <div class="btn-group" data-toggle="btn-toggle">
+                  <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i>
+                  </button>
+                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+                </div>
+              </div> -->
+            </div>
+            <div class="box-body chat" id="chat-box" style="height:350px;overflow:auto;">
+
+            	 <!-- chat item -->
+
+              <div class="item" ng-repeat="groupchat in groups.Groupchat">
+                <img ng-src="{{groupchat.user.image}}" alt="user image" class="online">
+
+                <p class="message">
+                  <a href="#!/home/profile/{{groupchat.user.user_id}}/User" class="name">
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{groupchat.cdt}}</small>
+                  {{groupchat.sent_id}}
+                  </a>
+                 {{groupchat.chat_description}}
+                </p>
+              </div>
+              <!-- /.item -->
+            </div>
+            <!-- /.chat -->
+            <div class="box-footer">
+            <form method="POST" id="formAddComment" class="form-horizontal" ng-submit="sendGroupMessage(groups.groupInfo.id, groups.message)">
+              <div class="input-group">
+                <input class="form-control msg" placeholder="Type message..." id="message" name ="message" ng-model="groups.message">
+
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-success" id="btnSendMsg" >Send</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+          <!-- /.box (chat box) -->
+			
+			</div>
+			<!-- /.col -->
+
+		</div>
+	
+<!-- /.page-content -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div ng-include="modelInculdeFile"></div>
+
+  
+</div>
+
+</div>
+</div>
+
+<script>
+	$(function() {
+		$("#leftSidebar").removeClass("hide");
+	});
+</script>

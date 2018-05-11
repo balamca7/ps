@@ -1,0 +1,405 @@
+<!-- <link type="text/css" href="/chat/cometchatcss.php" rel="stylesheet" charset="utf-8">
+<script type="text/javascript" src="/chat/cometchatjs.php" charset="utf-8"></script>
+ -->
+<!--<link type="text/css" rel="stylesheet" media="all" href="/chat/css.php" /> 
+<script type="text/javascript" src="/chat/js.php" charset="utf-8"></script>
+<link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8">
+<script type="text/javascript" src="/cometchat/cometchatjs.php" charset="utf-8"></script>
+-->
+<div ng-controller="homeCtrl"
+	class="hold-transition skin-blue sidebar-mini">
+
+	<header class="main-header" id="mainHeader">
+		<!-- Logo -->
+		<a href="#!/home" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><img src="dist/img/logo_bma.png" style="position:relative;height:40px;"></span> <!-- logo for regular state and mobile devices -->
+			<span class="logo-lg"><img src="dist/img/logo_bma.png" style="position:relative;height:40px;"> <b>BM</b> Associates</span>
+		</a>
+		<!-- Header Navbar: style can be found in header.less -->
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas"
+				role="button" id="leftToggleNav"> <span class="sr-only">Toggle
+					navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+
+			<div class="navbar-custom-menu " id="mainNavbar">
+				<ul class="nav navbar-nav pull-left">
+					<!-- Messages: style can be found in dropdown.less-->
+				<!--	<li class="dropdown messages-menu"><a href="javascript:;"
+						class="dropdown-toggle" data-toggle="dropdown"> <i
+							class="fa fa-envelope-o"></i> <span class="label label-info">{{MsgNotification.totalMsgCount}}</span>
+					</a>
+						<ul class="dropdown-menu">
+							<li class="header">You have
+								{{MsgNotification.totalMsgCount}} messages</li>
+							<li>
+							
+								<ul class="menu">
+								<li ng-repeat="msgList in MsgNotification.MsgNotificationList">
+										<a href="javascript:;" ng-click="chatUsers(msgList.sent_id)">
+											<div class="pull-left">
+												<img ng-src="{{msgList.image}}" class="img-circle"
+													alt="User Image">
+											</div>
+											<h4>
+												{{msgList.sent_id}} <small><i class="fa fa-clock-o"></i>
+													5 mins</small>
+											</h4>
+											<p>{{msgList.msgCount}} Message(s).</p>
+									</a>
+									</li>
+									
+								</ul>
+							</li>
+							<li class="footer"><a href="javascript:;">See All
+									Messages</a></li>
+						</ul></li>  -->
+						
+					<!-- Notifications: style can be found in dropdown.less -->
+					
+					<!-- Tasks: style can be found in dropdown.less -->
+					<!--           <li class="dropdown tasks-menu">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">9</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 9 tasks</li>
+              <li>
+                inner menu: contains the actual data
+                <ul class="menu">
+                  <li>Task item
+                    <a href="javascript:;">
+                      <h3>
+                        Design some buttons
+                        <small class="pull-right">20%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">20% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  end task item
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="javascript:;">View all tasks</a>
+              </li>
+            </ul>
+          </li>
+ -->
+					<!-- User Account: style can be found in dropdown.less -->
+					<!-- <li class="dropdown user user-menu"><a href="javascript:;"
+						class="dropdown-toggle" data-toggle="dropdown"> <img
+							ng-src="{{image}}" class="user-image" alt="User Image"> <span
+							class="hidden-xs">{{name}}</span>
+					</a>
+						<ul class="dropdown-menu">
+							
+							<li class="user-header"><img ng-src="{{image}}"
+								class="img-circle" alt="User Image">
+
+								<p ng-model="profile.userName">
+									{{name}}
+									
+								</p></li>
+						
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#!/home/profile/{{uid}}/user"
+										class="btn btn-default btn-flat">Profile</a>
+
+								</div>
+								<div class="pull-right" ng-controller ="authCtrl">
+									<a href="javascript:;" ng-click="logout();"
+										class="btn btn-default btn-flat">Sign out</a>
+								</div>
+							</li>
+						</ul></li> -->
+						<li class="dropdown user user-menu">
+								<div class="pull-right" ng-controller ="authCtrl" style="margin: 7px;">
+									<a href="javascript:;" ng-click="logout();"
+										class="btn btn-danger btn-flat"><i class="fa fas fa-power-off"></i> Sign Out</a>
+								</div>
+							</li>
+
+				</ul>
+
+
+
+				<!-- Control Sidebar Toggle Button 
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="javascript:;" data-toggle="control-sidebar"><i
+							class="fa fa-gears"></i></a></li>
+				</ul>  -->
+			</div>
+
+
+
+		</nav>
+	</header>
+
+	<div class="wrapper">
+		<!-- Left side column. contains the sidebar -->
+		<aside class="main-sidebar" id="leftSidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img ng-src="{{image}}" class="img-circle" alt="User Image">
+					</div>
+					<div class="pull-left info">
+						<p>{{name}}</p>
+						<a href="javascript:;"><i class="fa fa-circle text-success"></i>
+							Online</a>
+					</div>
+				</div>
+				<!-- search form -->
+				<!--<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control"
+							placeholder="Search..."> <span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn"
+								class="btn btn-flat">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form> -->
+				<!-- /.search form -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu">
+					<li class="header">MAIN NAVIGATION</li>
+					<li class="treeview"><a href="#!/home"> <i
+							class="fa fa-home"></i> <span>Home</span></a></li>
+							<!-- <li class="treeview"><a href="#!/home/profile/{{uid}}/user"> <i
+							class="fa fa-user"></i> <span>Profile</span></a></li> -->
+					<!-- <li class="treeview"><a href="#!/home/dashboard"> <i
+							class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> -->
+
+					<li class="treeview"><a href="#!/home/payslip"> <i
+							class="fa fa-files-o"></i><span>Payslip</span></a></li> 
+							
+							<!--<li class="treeview"><a href="#!/home/employee"> <i
+							class="fa fa-files-o"></i><span>Add Employee</span></a></li> -->
+							
+							
+				<!--	<li class="treeview"><a href="#!/home/usergroups"> <i
+							class="fa fa-group"></i><span>User Groups</span></a></li>-->
+					<!-- <li class="treeview"><a href="#!/home/findtutors"> <i
+							class="fa fa-graduation-cap"></i><span>Find Tutors</span></a></li>
+					<li class="treeview"><a href="#!/home/userSubjects"> <i
+							class="fa fa-file-text-o"></i><span>Subjects</span></a></li>
+						<li class="treeview">	  <a href="#!/home/mycalendar">
+            <i class="fa fa-calendar"></i> <span>My Calendar</span>
+          
+          </a>
+        </li>
+        	<li class="treeview">
+          <a href="#!/home/myrequest">
+            <i class="fa fa-repeat"></i> <span>My Request</span>
+       
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#!/home/resources">
+            <i class="fa fa-link"></i> <span>Resources</span>
+       
+          </a>
+        </li> -->
+			         <li class="treeview">
+			          <a href="javascript:;">
+			            <i class="fa fa-gear"></i>
+			            <span>Settings</span>
+			            <span class="pull-right-container">
+			              <span class="label label-primary pull-right">2</span>
+			            </span>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li><a href="#!/home/profile/{{uid}}/user"><i class="fa fa-circle-o"></i> Profile</a></li>
+			            <li ng-controller ="authCtrl"><a href="javascript:;" ng-click="logout();"><i class="fa fa-circle-o"></i> Sign Out</a></li>
+			           
+			            
+			            
+			          </ul>
+			        </li>
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<div class="content-wrapper" style="margin-top:-20px;border: 0px solid red;">
+			<div class=" slide-animation" app-view-segment="1"></div>
+
+		</div>
+
+
+		<!-- Control Sidebar -->
+	<div class="control-sidebar control-sidebar-dark">
+		<div class="tab-content">
+
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li class="active"><a href="#control-sidebar-home-tab"
+					data-toggle="tab"><i class="fa fa-phone"></i></a></li>
+				<!-- <li><a href="#control-sidebar-groups-tab" data-toggle="tab"><i
+						class="fa fa-users"></i></a></li> -->
+
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content" ng-controller="chatCtrl">
+				<!-- Home tab content -->
+
+				<div class="tab-pane active" id="control-sidebar-home-tab">
+					<!-- /.control-sidebar-menu -->
+
+					<ul class="control-sidebar-menu contactMenu">
+						<li ng-repeat="friends in contacts">
+							<!-- 			<a href="#!/profile/{{friends.user_id}}"> --> <a href="#"
+							ng-click="chatUsers(friends.user_id)"> <img
+								class="direct-chat-img" ng-src="{{friends.image}}"
+								alt="Message User Image"> <!-- <i class="menu-icon fa fa-user bg-red"></i> -->
+								<div class="menu-info">
+									<div class="control-sidebar-subheading" style='padding: 6px;'>
+										<span class="user">{{friends.user_id}}</span> <span
+											class="pull-right-container"><span
+											class="label label-success pull-right"
+											ng-show="friends.msgCount">{{friends.msgCount}}</span></span>
+									</div>
+								</div>
+						</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.tab-pane -->
+				<!-- Stats tab content -->
+				<!-- <div class="tab-pane" id="control-sidebar-groups-tab">
+					<ul class="control-sidebar-menu contactMenu">
+						<li ng-repeat="groupfriends in groupcontacts"><a
+							href="#!/home/groups/{{groupfriends.id}}/group"> <img
+								class="direct-chat-img" ng-src="{{groupfriends.image}}"
+								alt="Message User Image">  <i class="menu-icon fa fa-user bg-red"></i>
+								<div class="menu-info">
+									<div class="control-sidebar-subheading" style='padding: 6px;'>
+										<span class="user">{{groupfriends.group_name}}</span> <span
+											class="pull-right-container"><span
+											class="label label-success pull-right"
+											ng-show="groupfriends.msgCount">{{groupfriends.msgCount}}</span></span>
+									</div>
+								</div>
+						</a></li>
+					</ul>
+				</div> -->
+				<!-- /.tab-pane -->
+				<!-- Settings tab content -->
+				<div class="tab-pane" id="control-sidebar-settings-tab">
+					<ul class="control-sidebar-menu contactMenu">
+						<li><a href="javascript:;"> <img class="direct-chat-img"
+								src="{{image}}" alt="Message User Image">
+							<!-- <i class="menu-icon fa fa-user bg-red"></i> -->
+								<div class="menu-info">
+									<div class="control-sidebar-subheading" style='padding: 6px;'>
+										<span class="user">user_id</span> <span
+											class="pull-right-container"> <span
+											class="label label-success pull-right">msgCount</span>
+										</span>
+									</div>
+								</div>
+						</a></li>
+
+					</ul>
+				</div>
+				<!-- /.tab-pane -->
+			</div>
+
+
+
+
+
+		</div>
+
+	</div>
+	<!-- /.control-sidebar -->
+	<!-- Control Sidebar -->
+
+	<!-- /.control-sidebar -->
+	<div class="control-sidebar-bg"></div>
+	<!-- Libs -->
+
+
+	<div id="chatWindow">
+	<div ng-show="displayChat" class='col-sm-6 col-md-4 col-lg-3 div_Chat'
+	id='div_Chat'
+	style='bottom: -20px; position: fixed; right: 20px; z-index: 999;' >
+
+
+
+	<div class='box box-warning direct-chat direct-chat-warning'>
+		<div class='box-header with-border'>
+			<a href='#!/home/profile/{{allMessage.sent_id}}/user'><h3 class='box-title'>{{allMessage.sent_id}}</h3></a>
+			<!-- 
+
+
+
+
+
+			 -->
+
+
+			<div class='box-tools pull-right'>
+				<span data-toggle='tooltip' title='New Messages'
+					class='badge bg-green' id='msgCount'>{{allMessage.userMsgCount}}</span>
+				<button type='button' class='btn btn-box-tool'
+					data-widget='collapse'>
+					<i class='fa fa-minus'></i>
+				</button>
+
+				<button type='button' class='btn btn-box-tool' data-widget='close' ng-click="changeChatModel()">
+					<i class='fa fa-times'></i>
+				</button>
+			</div>
+		</div>
+		<div class='box-body'>
+			<div class='direct-chat-messages'>
+
+			<div class="direct-chat-msg" ng-class="(recMsg.Position=='left') ? '' : 'right'" ng-repeat="recMsg in allMessage.recMessage" >
+     		<div class="direct-chat-info clearfix">
+     			<span class="direct-chat-name" ng-class="(recMsg.Position=='left') ? 'pull-left' : 'pull-right'">{{recMsg.sent_id}}</span>
+     			<span class="direct-chat-timestamp" ng-class="(recMsg.Position=='left') ? 'pull-right' : 'pull-left'">{{recMsg.cdt}}</span>
+     		</div>
+     		<!-- /.direct-chat-info -->
+     		<img class="direct-chat-img" ng-src="{{recMsg.user.image}}" alt="User Image">
+     		<!-- /.direct-chat-img -->
+     		<div class="direct-chat-text">{{recMsg.chat_description}}</div>
+			<!-- /.direct-chat-text -->
+			</div>
+			</div>
+		<!-- /.direct-chat-msg -->
+		</div>
+		<div class='box-footer'>
+		<form method="POST" id="formSendMessage" class="form-horizontal" ng-submit="sendMessage(allMessage.sent_id, allMessage.message)">
+			<div class='input-group'>
+				<input type='text' name='message' placeholder='Type Message ...' ng-model="allMessage.message"
+					class='form-control msg'> <span class='input-group-btn'><button
+						type='submit' class='btn btn-warning btn-flat' id='btnSend'>Send</button></span>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+	</div>
+            	</div>
+</div>
+<!--<footer class="main-footer" >
+	<strong>Copyright &copy; 2016 - 2017<a href="#!/home">StudyCollab</a>.
+	</strong> All rights reserved.
+</footer>
+ -->
+
+<script src="dist/js/app.min.js"></script>

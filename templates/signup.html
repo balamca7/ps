@@ -1,0 +1,166 @@
+
+
+<!-- <div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">SignUp</li>
+    </ul>
+</div>
+ --><div class="page-content" ng-controller="authCtrl">
+    <div class="row">
+        <div class="space-6"></div>
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class=" visible widget-box with-border" >
+                <div class="widget-body" style="border: 1px solid gray; padding: 20px 30px;">
+                    <div class="widget-main">
+                        <div class="" style="text-align: center;">
+							<img src="dist/img/logo.jpg" />
+						</div>
+						<h4 class="header blue lighter bigger">
+							<i class="icon-coffee green"></i> Register a new account
+						</h4>
+<br/>
+                        <form name="signupForm" class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="email">Email</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <input type="email" class="form-control" placeholder="Email" name="email" id="email" ng-model="signup.emailAddress" focus />
+                                        <small class="error" data-ng-show="signupForm.email.$dirty && signupForm.email.$invalid"> Enter Email id.</small>
+                                        <small class="error" data-ng-show="signupForm.email.$error.email">Email is not valid</small>
+                                         
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="password">Password</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="password" class="form-control" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" name = "password" placeholder="Password" ng-model="signup.password" required/>
+                                <small class="error" data-ng-show="signupForm.password.$dirty && signupForm.password.$invalid"> Enter Password. Passwords must contain atleast 8 character including UPPER / lower case, special character & numbers.</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="password2">Confirm Password</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="password" class="form-control" name="password2" placeholder="Password Again" ng-model="signup.password2" password-match="signup.password" required/>                                
+                                <small class="error" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</small>
+
+                               <small class="error" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</small>
+
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">User name</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="User name" name="userName" ng-model="signup.userName" required />
+                                <small class="error" data-ng-show="signupForm.userName.$dirty && signupForm.userName.$error.required"> Enter user name.</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">First name</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="First name" name="firstName" ng-model="signup.firstName" required />
+                                <small class="error" data-ng-show="signupForm.firstName.$dirty && signupForm.firstName.$error.required"> Enter first name.</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">Middle name</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="Middle name" name="middleName" ng-model="signup.middleName" />
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">Last name</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="Last name" name="lastName" ng-model="signup.lastName" required />
+                                <small class="error" data-ng-show="signupForm.lastName.$dirty && signupForm.lastName.$error.required"> Enter last name.</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="phone">Telephone</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="tel" class="form-control data-mask" placeholder="Telephone" name="telephone" ng-model="signup.telephone" data-inputmask="'mask': ['999-999-9999', '+099 99 99 9999[9]-9999']" required />
+                                <small class="error" data-ng-show="signupForm.telephone.$dirty && signupForm.telephone.$error.required"> Enter telephone.</small>
+                            </span>
+                                </div>
+                            </div>
+                          <!--   <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="phone">Mobile</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="tel" class="form-control data-mask" placeholder="Mobile" name="mobile" ng-model="signup.mobile" data-inputmask="'mask': ['(+99) 999 999 9999', '(+99) 999 999 9999']" required />
+                                <small class="error" data-ng-show="signupForm.mobile.$dirty && signupForm.mobile.$error.required"> Enter mobile.</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">Screen name</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="Screen name" name="screenName" ng-model="signup.screenName" required/>
+                                <small class="error" data-ng-show="signupForm.screenName.$dirty && signupForm.screenName.$error.required"> Enter Screen name.</small>
+                            </span>
+                                </div>
+                            </div> -->
+							<div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="name">Type of Tutors</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                 <select class="form-control select2 country"
+											style="width: 100%;" id="tutorType" name="tutorType"
+											data-placeholder="Select Tutor type" required
+											ng-model="signup.tutorType" 
+											
+											ng-options="option.id as option.name for option in Tutortype">
+											<option value="">Select Tutor type</option>
+										</select>
+                                <small class="error" data-ng-show="signupForm.screenName.$dirty && signupForm.screenName.$error.required"> Enter Screen name.</small>
+                            </span>
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <span class="lbl col-sm-5"> </span>
+                                <div class="col-sm-7">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                            </fieldset>
+                            <span class="lbl col-sm-5"> </span>
+                            <div class="col-sm-7">Already have an account? <a href="#!/login">SignIn</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.page-content -->
+<script>
+  $(function () {
+    
+    $(".data-mask").inputmask();
+    $(".select2").select2();
+});
+</script>

@@ -1,0 +1,137 @@
+	<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li><a href="#!/home"><i
+				class="ace-icon fa fa-home home-icon"></i> Home</a></li>
+		<li class="active">Department</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="categoryCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+		<div class=" col-sm-10 ">
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<!-- Chat box -->
+				<div class="box box-warning div_groupChat">
+					<div class="box-header">
+						<i class="fa fa-book"></i>
+
+						<h3 class="box-title">Department</h3>
+						<button class="btn btn-sm btn-success" style  = "float : right; padding : 8px"
+									ng-click="addNewClicked=!addNewClicked;">Add New</button>
+						
+					</div>
+					<div class="box-body chat" id="chat-box"
+						style="min-height: 350px; overflow: auto;">
+
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<!-- <div class="input-group col-sm-4">
+								<button class="btn btn-sm btn-success"
+									ng-click="addNewClicked=!addNewClicked;">Add New</button>
+							</div>
+							<br> -->
+							
+							<form method="POST" name="formNew" id="formNew" class="form-horizontal" role="form">
+							
+									<div style="border:1px solid lightgrey;padding:10px;" ng-init="addNewClicked=false; newCategory = {name:'', isActive:''}; "	ng-show="addNewClicked">
+
+							<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">Department</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right"> 
+							<input type="text" class="form-control input-sm"
+											placeholder="Department" name="name"
+											ng-model="newCategory.name" required> <small
+											class="error"
+											ng-show="formNew.name.$dirty && formNew.name.$error.required">
+												Enter department.</small>
+							</span>
+						</div>
+					</div>
+												<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right">Status</label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right">
+							<input icheck type="checkbox" ng-checked="true"
+											disabled ng-model="newCategory.isActive"> 
+							</span>
+						</div>
+					</div>
+					
+												<div class="form-group">
+						<label class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right"></label>
+						<div class="col-xs-6 col-sm-4 col-md-7">
+							<span class="block input-icon input-icon-right">
+							<button type="submit" class="btn btn-sm btn-success"
+												ng-disabled="formNew.$invalid"
+												ng-click="addCategory(newCategory)">Add</button>&nbsp;
+											<button class="btn btn-sm btn-danger"
+												ng-click="addNewClicked = false; newCategory = {name:'', isActive:true};">Cancel</button>
+							</span>
+						</div>
+					</div>
+					
+
+					
+						</div>	
+							
+								</div>
+							</form>
+
+							<div class="col-xs-12 col-sm-12 col-md-12">
+							<!-- datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumns"  -->
+							<table id="dashboardtable"  datatable="ng"
+								class="table table-striped table-bordered" cellspacing="0"
+								width="100%">
+								<thead class="bg-primary">
+									<tr>
+										<th>ID</th>
+										<th>Department</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+						
+							
+								
+									<tr ng-repeat="cat in category"	ng-include="getCategoryTemplate(cat)">
+									</tr>
+
+								</tbody>
+							</table>
+
+							<script type="text/ng-template" id="displayCategory">
+        <td>{{cat.id}}</td>
+					<td>{{cat.name}}</td>
+					<td>{{cat.isActive == 1 ? 'Active':'In Active'}}</td>
+					<td>
+						
+						<button class="btn btn-sm btn-info" ng-click="editCategory(cat)">Edit</button>
+
+						</td>
+
+    </script>
+							<script type="text/ng-template" id="editCategory">
+	<form method="POST" id="formUpload" name="formUpload" 
+					class="form-horizontal"	>
+					<td>{{category.selected.id}}</td>
+					<td><input type="text" class="form-control input-sm" ng-model="category.selected.name" required> </td>
+					<td><input icheck type="checkbox" class="icheck" ng-model="category.selected.isActive" ng-checked="category.selected.isActive==1"></td>
+					<td><button class="btn btn-sm btn-success" ng-disabled="category.selected.name==undefined" ng-click="saveEditCategory($index, category.selected)" >Save</button>
+						<button class="btn btn-sm btn-danger" ng-click="reset()">Cancel</button>
+					</td>
+					</form>
+				
+    </script>
+
+							<br>
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+	</div>

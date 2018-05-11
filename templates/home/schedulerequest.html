@@ -1,0 +1,247 @@
+<section class="content-header">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> <a
+			href="#!/home">Home</a></li>
+		<li class="active">Schedule</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="scheduleCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+
+		<div class="col-sm-11">
+
+
+			<div class="col-xs-12 col-sm-12 col-md-10">
+				<div class="box box-warning div_groupChat">
+					<div class="box-header">
+						<i class="fa fa-graduation-cap"></i>
+
+						<h3 class="box-title">Schedule Tutor</h3>
+					</div>
+					<div class="box-body chat" id="chat-box"
+						style="min-height: 350px; overflow: auto;">
+						<div class="box-body">
+
+<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div> 
+
+							<div class="form-horizontal row">
+								<form name="formNew" role="form" ng-init="test = false">
+
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">Tutor
+											name</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+											<p class="pull-left control-label">{{schdReq.tutor_name}}</p>
+										</div>
+									</div>
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">Title
+											</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+										
+												
+											<input type="text" class="form-control"
+												placeholder="Title"  name="title"
+												 ng-model="schdReq.title" required >
+												 <small class="error"
+												ng-show="formNew.title.$error.required">
+													Please enter title.</small>
+										</div>
+									</div>
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">Schedule
+											Date</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+										
+										<div class="input-group"
+     moment-picker="schdReq.req_date" today="true"  min-view="month" max-view="day"
+      format="MM/DD/YYYY">
+    
+    <input class="form-control" id="req_date" name="req_date" ng-blur="schdReq.start_time='';schdReq.no_of_hour='';schdReq.end_time='';"
+           placeholder="Select a date"  today="true"  min-view="month" max-view="day" required
+           ng-model="schdReq.req_date"
+           ng-model-options="{ updateOn: 'blur' }"><span class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+    </span>
+</div> 
+											
+											<!-- <input datetime-picker date-only  future-only date-format="MM/dd/yyyy" class="form-control"
+												placeholder="Schedule Date"  name="req_date"
+												 ng-model="schdReq.req_date" required > -->
+												 <small class="error"
+												ng-show="formNew.req_date.$error.required">
+													Please select schedule date.</small>
+										</div>
+									</div>
+										
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">Start
+											Time </label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+										<div class="input-group"
+     moment-picker="schdReq.start_time"
+     format="HH:mm">
+   
+    <input class="form-control" id="start_time" name="start_time"
+           placeholder="Select a time" ng-blur="schdReq.no_of_hour='';schdReq.end_time='';"
+           ng-model="schdReq.start_time" required
+           ng-model-options="{ updateOn: 'blur' }"> <span class="input-group-addon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+</div>
+											<!-- <input class="form-control"
+												id="start_time" name="start_time"
+												 ng-model="schdReq.start_time"  min="08:00:00" max="17:00:00" required datetime-picker date-format="HH:mm"> -->
+	<small class="error"
+												ng-show="formNew.start_time.$error.required">
+													Please enter start time.</small>
+													<small class="error" ng-show="formNew.start_time.$error.time">
+         Not a valid date!</small>
+										</div>
+									</div>
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">No of Hour(s)
+											</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+											<select class="form-control select2" name="no_of_hour"
+										data-placeholder="Select " ng-model="schdReq.no_of_hour"
+										required
+										ng-change="getEndTime(schdReq.req_date, schdReq.start_time,schdReq.no_of_hour)">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											
+									</select>
+									<small class="error"
+												ng-show=" formNew.no_of_hour.$error.required">
+													Please select no.of Hour(s).</small>
+										</div>
+									</div>
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">End
+											Time</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+											<input  date-format="HH:mm:ss" class="form-control"
+												placeholder="End Time" id="end_time" name="end_time"
+												required  ng-model="schdReq.end_time" readonly>
+												<small class="error"
+												ng-show="formNew.end_time.$error.required">
+													Please enter end time.</small>
+													<small class="error" ng-show="formNew.end_time.$error.time">
+         Not a valid date!</small>
+												
+										</div>
+									</div>
+									<div class="form-group col-sm-10">
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">
+											Appointment Type</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+										<div class="checkbox icheck">
+							<label> <input type="radio" class="" value="Audio / Video" name="appointment" checked ng-model="schdReq.appointment" ng-change="test=false" required> Audio / Video</label>
+							<label><input type="radio" value="In Person" name="appointment" ng-model="schdReq.appointment" ng-change="test=true" required> In Person</label>
+							
+						</div>
+							<small class="error"
+												ng-show="formNew.appointment.$error.required">
+													Please select appointment type.</small>				
+											
+
+										</div>
+									</div>
+
+							<div class="form-group col-sm-10" ng-if="test == true" >
+										<label class="col-xs-6 col-sm-8 col-md-5 control-label">Address / Location</label>
+
+										<div class="col-xs-6 col-sm-4 col-md-7">
+										    
+											<textarea class="form-control"
+												placeholder="Address / Location" id="location" name="location"
+												  ng-model="schdReq.locaiton" required ng-disabled="!test" ></textarea>
+												<small class="error"
+												ng-show=" formNew.location.$error.required">
+													Please enter address / location.</small>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label
+											class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right"></label>
+										<div class="col-xs-6 col-sm-4 col-md-7">
+											<span class="block input-icon input-icon-right">
+												<button type="submit"
+													class="btn btn-sm btn-success btn-flat"
+													ng-disabled="formNew.$invalid"
+													ng-click="addSchedule(schdReq)">Save Request</button>
+											</span>
+										</div>
+									</div>
+
+
+								</form>
+
+								<table 
+									class="table table-striped table-bordered" cellspacing="0"
+									width="100%">
+									<thead class="bg-primary">
+										<tr>
+											<th>Sl.No</th>
+											<th>Tutor Name</th>
+											<th>Schedule Date</th>
+											<th width="100">Start Time</th>
+											<th>End Time</th>
+											<th>Total Hour(s)</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="list in schdeuleList  track by $index">
+											<td>{{$index+1}}</td>
+											<td>{{list.tutor_name}}</td>
+											<td>{{list.req_date}}</td>
+											<td>{{list.start_time}}</td>
+											<td>{{list.end_time}}</td>
+											<td>{{list.no_of_hour}}</td>
+											<td><button ng-click="remove($index)"
+														class="btn btn-sm btn-warning">Delete</button></td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+
+							<div class="form-group">
+								<label
+									class="col-xs-6 col-sm-8 col-md-5 control-label no-padding-right"></label>
+								<div class="col-xs-6 col-sm-4 col-md-7">
+									<span class="block input-icon input-icon-right">
+										<button type="submit" class="btn btn-sm btn-success btn-flat"
+											ng-disabled="schdeuleList.length==0"
+											ng-click="submitSchedule(schdeuleList)">Submit Request(s)</button>&nbsp;
+										<a class="btn btn-sm btn-danger btn-flat"
+										href="#!/home/findtutors">Cancel</a>
+									</span>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+
+					<!-- /.col -->
+
+				</div>
+			</div>
+		</div>
+		<!-- /.page-content -->
+	</div>
+</div>

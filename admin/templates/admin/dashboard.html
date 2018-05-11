@@ -1,0 +1,293 @@
+
+<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li><a href="#!/home"><i
+				class="ace-icon fa fa-home home-icon"></i> Home</a></li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="dashboardCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+		<div class="col-sm-10 ">
+
+			<div class="widget-body">
+				<div class="row content-header">
+
+					<!-- ./col -->
+					<div class=" col-xs-6 col-lg-3">
+						<!-- small box -->
+
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{totalUser}}</h3>
+
+								<p>Total Employee</p>
+							</div>
+							<div class="icon ">
+								<i class="ion ion-person"></i>
+
+							</div>
+							<a href="#!/home/listemp" class="small-box-footer"> More info <i
+								class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+					</div>
+
+					<!-- <div class="col-lg-3 col-xs-6">
+						
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{totalQuestion}}</h3>
+
+								<p>Total Questions</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-files-o"></i>
+							</div>
+							<a href="#!/home" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div> -->
+
+<!-- 					<div class="col-lg-3 col-xs-6">
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>
+									53<sup style="font-size: 20px">%</sup>
+								</h3>
+
+								<p>Bounce Rate</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-stats-bars"></i>
+							</div>
+							<a href="#!/home" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-xs-6">
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3>65</h3>
+
+								<p>Unique Visitors</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-pie-graph"></i>
+							</div>
+							<a href="#!/home" class="small-box-footer">More info <i
+								class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+ -->
+
+
+					<!--          <div class="col-lg-3 col-xs-6">
+          <div class="small-box bg-blue">
+
+            <div class="inner">
+              <h3>Ask&nbsp;</h3>
+
+              <p> Question</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-files-o"></i>
+            </div>
+                <a href="#!/home/postQuestion" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+               </a>
+             </div>
+
+
+        </div>
+ -->
+					<!-- ./col -->
+					<!--      <div class="col-lg-3 col-xs-6">
+              <div class="small-box bg-maroon">
+            <div class="inner">
+              <h3>View&nbsp;</h3>
+
+              <p> Questions</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-eye"></i>
+            </div>
+            <a href="#!/home/dashboard" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+
+        </div>
+ -->
+					<!-- ./col -->
+					<!--   <div class="col-lg-3 col-xs-6">
+          small box
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+
+ -->
+					<!-- /.col -->
+					<!--         <div class="col-md-3 col-sm-6 col-xs-4">
+         <a href="#!/home/findtutors">
+
+          <div class="info-box bg-navy">
+            <span class="info-box-icon "><i class="fa fa-graduation-cap"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Find <br>Tutors</span>
+              <span class="info-box-number"></span>
+            </div>
+          </div>
+          </a>
+        </div>
+ -->
+					<!-- ./col -->
+
+
+					<!--         <div class="col-md-3 col-sm-6 col-xs-4" >
+        <a href="#!/home/usergroups">
+          <div class="info-box bg-purple">
+            <span class="info-box-icon"><i class="fa fa-group"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">User <br>Groups</span>
+              <span class="info-box-number"></span>
+            </div>
+              </div>
+                      </a>
+        </div>
+     -->
+				<!-- =========================================================== -->
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Member Details</h3>
+
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="chart-responsive">
+									<!-- <canvas id="pieChart" height="150"></canvas> -->
+									<chart value="pieChart" id="pieChart" height="300"></chart>
+     							</div>
+								<!-- ./chart-responsive -->
+							</div>
+							<!-- /.col -->
+							<div class="col-md-4">
+								<ul class="chart-legend clearfix">
+									<li><i class="fa fa-circle-o text-red"></i> BM Associates</li>
+									<li><i class="fa fa-circle-o text-green"></i>Karrot Technologies</li>
+								</ul>
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+
+
+			<div class="col-md-6" ng-repeat="(key, value) in companyEmp">
+			
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{key}}</h3>
+
+                  <div class="box-tools pull-right">
+                    <span class="label label-danger">{{value.length}} Members</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding" style="">
+                  <ul class="users-list clearfix">
+                    <li ng-repeat="user in value">
+                      <img src="../{{user.imagepath}}" alt="User Image">
+                      <a class="users-list-name" href="#!/home/empdetail/{{user.id}}">{{user.fname}}</a>
+                      <span class="users-list-date"></span>
+                    </li>
+                    
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center" style="">
+                  <a href="#!/home/listemp" class="uppercase">View All Users</a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+
+
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Question Details</h3>
+						<span class="pull-right"><select class="form-control select2 input-sm"
+											style="width: 100%;" id="category" name="category"
+											data-placeholder="Select Category" 
+											ng-model="category_id"
+											ng-options="option.id as option.name for option in Category"
+											ng-change="bar(category_id);"
+											 >
+											<option value="All">All</option>
+							</select> 
+							
+							</span>
+					</div>
+
+					<div class="box-body">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="chart-responsive">
+									
+									<chart value="barChart" id="barChart" height="300"></chart>
+     							</div>
+								
+							</div>
+							
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+			 -->
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<script>
+	$(function() {
+		
+        $("#leftSidebar").removeClass("hide");
+        
+	});
+</script>

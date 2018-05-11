@@ -1,0 +1,121 @@
+<div >
+<div ng-show="displayChat" class='col-sm-6 col-md-4 col-lg-3 div_Chat'
+	id='div_Chat'
+	style='bottom: -20px; position: fixed; right: 20px; z-index: 999;' >
+	
+	
+	
+	<div class='box box-warning direct-chat direct-chat-warning'>
+		<div class='box-header with-border'>
+			<a href='#!/profile/{{allMessage.sent_id}}/user'><h3 class='box-title'>{{allMessage.sent_id}}</h3></a>
+		<!-- 	<button type='button' class='btn btn-box-tool' title='Video Call' ng-click="makeVideoCall(allMessage.sent_id);">
+					<i class='fa fa-video-camera' aria-hidden="true"></i>
+				</button>
+			<button type='button' class='btn btn-box-tool' title='Phone Call'>
+					<a href="tel:+919003723111"><i class='fa fa-phone' aria-hidden="true"></i></a>
+					
+					
+					
+				</button> -->
+				
+					
+			<div class='box-tools pull-right'>
+				<span data-toggle='tooltip' title='New Messages'
+					class='badge bg-green' id='msgCount'>{{allMessage.userMsgCount}}</span>
+				<button type='button' class='btn btn-box-tool'
+					data-widget='collapse'>
+					<i class='fa fa-minus'></i>
+				</button>
+			
+				<button type='button' class='btn btn-box-tool' data-widget='close' ng-click="changeChatModel()">
+					<i class='fa fa-times'></i>
+				</button>
+			</div>
+		</div>
+		<div class='box-body'>
+			<div class='direct-chat-messages'>
+			
+			<div class="direct-chat-msg" ng-class="(recMsg.Position=='left') ? '' : 'right'" ng-repeat="recMsg in allMessage.recMessage" >
+     		<div class="direct-chat-info clearfix">
+     			<span class="direct-chat-name" ng-class="(recMsg.Position=='left') ? 'pull-left' : 'pull-right'">{{recMsg.sent_id}}</span>
+     			<span class="direct-chat-timestamp" ng-class="(recMsg.Position=='left') ? 'pull-right' : 'pull-left'">{{recMsg.cdt}}</span>
+     		</div>
+     		<!-- /.direct-chat-info -->
+     		<img class="direct-chat-img" ng-src="{{recMsg.user.image}}" alt="User Image">
+     		<!-- /.direct-chat-img -->
+     		<div class="direct-chat-text">{{recMsg.chat_description}}</div>
+			<!-- /.direct-chat-text -->
+			</div>
+			</div>
+		<!-- /.direct-chat-msg -->
+		</div>
+		<div class='box-footer'>
+		<form method="POST" id="formSendMessage" class="form-horizontal" ng-submit="sendMessage(allMessage.sent_id, allMessage.message)">
+			<div class='input-group'>
+				<input type='text' name='message' placeholder='Type Message ...' ng-model="allMessage.message"
+					class='form-control msg'> <span class='input-group-btn'><button
+						type='submit' class='btn btn-warning btn-flat' id='btnSend'>Send</button></span>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+	<!-- 
+	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="VideoChat_JS/common.js"></script>
+
+<script src="VideoChat_JS/main.js"></script>
+        SOUNDS
+        <audio id="callingSignal" loop preload="auto">
+            <source src="dist/audio/calling.ogg"></source>
+            <source src="dist/audio/calling.mp3"></source>
+        </audio>
+
+        <audio id="ringtoneSignal" loop preload="auto">
+            <source src="dist/audio/ringtone.ogg"></source>
+            <source src="dist/audio/ringtone.mp3"></source>
+        </audio>
+
+        <audio id="endCallSignal" preload="auto">
+            <source src="dist/audio/end_of_call.ogg"></source>
+            <source src="dist/audio/end_of_call.mp3"></source>
+        </audio>
+    </div>
+
+    <div class="modal fade" id="income_call1" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Call from <strong class="j-ic_initiator"></strong></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default j-decline">Decline</button>
+                    <button type="button" class="btn btn-primary j-accept">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="income_call" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <button type='button' class='btn btn-box-tool' data-widget='close' >
+					<i class='fa fa-times'></i>
+				</button>
+        <div class="modal-dialog modal-sm">
+            <style>
+    video {
+      border:5px solid black;
+      width:320px;
+      height:240px;
+    }
+  </style>
+                    <video id="vid1" autoplay="true" muted="true"></video>
+  <video id="vid2" autoplay></video>
+  <br>
+  <button id="btn1">Call</button>
+  <button id="btn2">Accept</button>
+  <button id="btn3">Hang Up</button>
+            </div>
+        </div>
+    </div>
+     -->

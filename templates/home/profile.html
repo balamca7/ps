@@ -1,0 +1,247 @@
+<section class="col-sm-12">
+	<ol class="breadcrumb">
+		<li><i class="ace-icon fa fa-home home-icon"></i> <a
+			href="#!/home">Home</a></li>
+		<li class="active">Profile</li>
+	</ol>
+</section>
+<div class="page-content" ng-controller="profileCtrl">
+	<div class="row">
+		<div class="space-6"></div>
+
+
+		<div class="col-sm-11">
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<div class="box box-warning">
+					<div class="box-body box-profile">
+					
+						<img class="profile-user-img img-responsive img-circle "
+							id="profileImage"
+							style="position: reletive; min-height: 100px; max-width: 100px;"
+							ng-src="{{Emp.imagepath}}" alt="User profile picture" />
+
+						<h3 class="profile-username text-center">{{Emp.fname}}</h3>
+						
+
+						<p class="text-muted text-center"></p>
+
+						<ul class="list-group list-group-unbordered">
+
+
+							
+						<a href="#" ng-click="UplodPhoto()"
+							class="btn btn-primary btn-block" id="btnUploadPhoto"
+							><b>Upload Photo </b></a> 
+
+						<a href="#"
+							ng-click="ChangePassword()" class="btn btn-primary btn-block"
+							id="btnChangePwd" ><b>Change	
+								Password</b></a>
+					</div>
+					<!-- /.box-body -->
+				</div>
+					</div>
+			<!-- 			<button ng-click="open()" class="btn btn-default">Open modal</button>
+			 
+  <modal  visible="showModal">
+    <div ng-include="modelInculdeFile"></div>
+  </modal>
+ -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div ng-include="modelInculdeFile"></div>
+
+
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<div class="nav-tabs-custom ">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#activity" data-toggle="tab">User Information</a></li>
+
+					<!-- 	<li><a href="#timeline" data-toggle="tab">School
+								Information</a></li>
+						<li><a href="#settings" data-toggle="tab">Educational
+								Information</a></li> -->
+								
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="activity">
+
+
+
+							<div class="form-horizontal row"
+								ng-include="getProfileTemplate(Emp)">
+								
+							
+							
+								
+								<script type="text/ng-template" id="displayProfile">
+        						
+							
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">First
+										Name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.fname}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10 ">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Middle
+										Name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.mname}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Last
+										Name</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.lname}}</p>
+									</div>
+								</div>
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Email</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.email}}</p>
+
+									</div>
+								</div>
+								
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Date of Birth</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.dob}}</p>
+										
+
+									</div>
+								</div>
+								
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Mobile</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.mobile}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Present Address</label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.pre_address}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Permenant Address </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.per_address}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Date of Joining </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.doj}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">PAN </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.pan_no}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Bank Name </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.bank_name}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Bank Account number </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.bank_acc_no}}</p>
+										
+
+									</div>
+								</div>
+								
+							<!-- 	<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Monthly CTC </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.monthly_ctc}}</p>
+										
+
+									</div>
+								</div>
+								
+								<div class="form-group col-sm-10">
+									<label class="col-xs-6 col-sm-8 col-md-5 control-label">Annual CTC </label>
+
+									<div class="col-xs-6 col-sm-4 col-md-7">
+										<p class="pull-left control-label">{{Emp.annual_ctc}}</p>
+									</div>
+								</div> -->
+							
+								
+
+								
+    							</script>
+							</div>
+
+						</div>
+						
+						<!-- /.tab-pane -->
+					</div>
+					<!-- /.tab-content -->
+				</div>
+				<!-- /.nav-tabs-custom -->
+			</div>
+			<!-- /.col -->
+
+
+
+
+
+
+			<!-- col end -->
+
+		</div>
+	</div>
+</div>
+<!-- /.page-content -->
+<script>
+	$(function() {
+        $("#leftSidebar").removeClass("hide");
+	});
+</script>
